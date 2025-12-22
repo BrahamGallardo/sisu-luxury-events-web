@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(identify:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File update-lightbox.ps1:*)",
+      "Bash(for file in 404.html about.html contact.html decoration-baby-shower.html decoration-elegant-entrance.html decoration-elegant.html decoration-fairy-tale.html decoration-floral-dream.html decoration-love.html decoration-shimmer-walls.html decoration-white-buttlerfly.html decorations.html index.html snack-carts.html snack-charcuterie.html snack-elote.html snack-fruitsnacks.html snack-maruchan.html snack-minipancakes.html snack-paletacart.html snack-snackcart.html)",
+      "Bash(do sed -i 's|<a href=\"\"#\"\" class=\"\"nav-item nav-link\"\">Terms</a>|<a href=\"\"terms.html\"\" class=\"\"nav-item nav-link\"\">Terms</a>|g' \"$file\")",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

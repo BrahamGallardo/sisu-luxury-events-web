@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Booking - Sisu Luxury Events</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon.jpg" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Ardhelia Font -->
+    <style>
+        @font-face {
+            font-family: 'Ardhelia';
+            src: url('fonts/Ardhelia.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <img src="img/image.png" alt="Sisu Luxury Decor" class="navbar-logo">
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="decorations.html" class="nav-item nav-link">Decorations</a>
+                <a href="snack-carts.html" class="nav-item nav-link">Snack Carts</a>
+                <a href="terms.html" class="nav-item nav-link">Terms</a>
+                <a href="booking.html" class="nav-item nav-link active">Booking</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-light animated slideInDown mb-3">Book Your Event</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-light" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Booking</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Booking Start -->
+    <div class="container-xxl py-6">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+                <p class="text-primary text-uppercase mb-2">✨ Reserve Your Date</p>
+                <h1 class="display-6 mb-4">Let's Make Your Event Unforgettable</h1>
+                <p>Transform your special occasion with our elegant decorations and delightful snack carts. Fill out the
+                    booking form below and our team will contact you within 24 hours to confirm availability and
+                    finalize the details of your event.</p>
+            </div>
+            <div class="row g-5 justify-content-center">
+                <!-- Booking Form -->
+                <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-light rounded p-5">
+                        <form id="bookingForm">
+                            <div class="row g-3">
+                                <!-- Personal Information -->
+                                <div class="col-12">
+                                    <h5 class="text-light mb-3"><i class="fas fa-user me-2 text-primary"></i>Personal
+                                        Information</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="fullName" placeholder="Full Name"
+                                            required>
+                                        <label for="fullName">Full Name *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Email"
+                                            required>
+                                        <label for="email">Email Address *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+                                        <label for="phone">Phone Number *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="city" placeholder="City">
+                                        <label for="city">City</label>
+                                    </div>
+                                </div>
+
+                                <!-- Event Details -->
+                                <div class="col-12 mt-4">
+                                    <h5 class="text-light mb-3"><i
+                                            class="fas fa-calendar-alt me-2 text-primary"></i>Event Details</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="eventType" required>
+                                            <option value="" selected disabled>Select Event Type</option>
+                                            <option value="wedding">Wedding</option>
+                                            <option value="birthday">Birthday Party</option>
+                                            <option value="baby-shower">Baby Shower</option>
+                                            <option value="quinceañera">Quinceañera</option>
+                                            <option value="anniversary">Anniversary</option>
+                                            <option value="corporate">Corporate Event</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <label for="eventType">Event Type *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="eventDate" required>
+                                        <label for="eventDate">Event Date *</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="time" class="form-control" id="eventTime">
+                                        <label for="eventTime">Event Time</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="guestCount"
+                                            placeholder="Number of Guests" min="1">
+                                        <label for="guestCount">Expected Number of Guests</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="venue" placeholder="Venue">
+                                        <label for="venue">Event Venue/Location</label>
+                                    </div>
+                                </div>
+
+                                <!-- Event Summary -->
+                                <div class="col-12 mt-4">
+                                    <h5 class="text-light mb-3"><i class="fas fa-star me-2 text-primary"></i>My Event
+                                        Services</h5>
+                                    <p class="small mb-3">
+                                        Browse our <a href="decorations.html" class="text-link">Decorations</a> and
+                                        <a href="snack-carts.html" class="text-link">Snack Carts</a> to add services
+                                        to your event.
+                                    </p>
+                                </div>
+                                <div class="col-12" id="eventSummaryContainer">
+                                    <!-- Event summary will be populated here by JavaScript -->
+                                    <div class="alert alert-info text-center">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>No services added yet.</strong><br>
+                                        Browse our <a href="decorations.html" class="alert-link">Decorations</a> and
+                                        <a href="snack-carts.html" class="alert-link">Snack Carts</a> to add items to
+                                        your event.
+                                    </div>
+                                </div>
+
+                                <!-- Budget -->
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="budget">
+                                            <option value="" selected>Select your budget range</option>
+                                            <option value="500-1000">$500 - $1,000</option>
+                                            <option value="1000-2000">$1,000 - $2,000</option>
+                                            <option value="2000-3500">$2,000 - $3,500</option>
+                                            <option value="3500+">$3,500+</option>
+                                            <option value="flexible">Flexible</option>
+                                        </select>
+                                        <label for="budget">Budget Range</label>
+                                    </div>
+                                </div>
+
+                                <!-- How did you hear about us -->
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="hearAbout">
+                                            <option value="" selected>How did you find us?</option>
+                                            <option value="instagram">Instagram</option>
+                                            <option value="facebook">Facebook</option>
+                                            <option value="google">Google Search</option>
+                                            <option value="referral">Friend/Family Referral</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <label for="hearAbout">How Did You Hear About Us?</label>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Details -->
+                                <div class="col-12 mt-4">
+                                    <h5 class="text-light mb-3"><i
+                                            class="fas fa-comments me-2 text-primary"></i>Additional Details</h5>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Additional Details"
+                                            id="additionalDetails" style="height: 150px"></textarea>
+                                        <label for="additionalDetails">Tell us more about your vision, special requests,
+                                            or any questions you have...</label>
+                                    </div>
+                                </div>
+
+                                <!-- Terms and Conditions -->
+                                <div class="col-12 mt-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+                                        <label class="form-check-label" for="acceptTerms">
+                                            I have read and accept the <a href="terms.html" target="_blank" class="text-link">Terms and Conditions</a> *
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12 text-center mt-4">
+                                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">
+                                        <i class="fas fa-paper-plane me-2 text-primary"></i>Submit Booking Request
+                                    </button>
+                                    <p class="mt-3 small">* Required fields. We'll contact you within 24 hours to
+                                        confirm availability.</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Booking Info Sidebar -->
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-primary text-white rounded p-5 mb-4">
+                        <h5 class="text-white mb-4"><i class="fas fa-info-circle me-2"></i>Booking Information</h5>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-check-circle mt-1 me-3"></i>
+                            <div>
+                                <h6 class="text-white mb-1">Quick Response</h6>
+                                <p class="mb-0 small">We respond to all booking requests within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-calendar-check mt-1 me-3"></i>
+                            <div>
+                                <h6 class="text-white mb-1">Flexible Scheduling</h6>
+                                <p class="mb-0 small">We work with your timeline and venue requirements</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-dollar-sign mt-1 me-3"></i>
+                            <div>
+                                <h6 class="text-white mb-1">Custom Quotes</h6>
+                                <p class="mb-0 small">Pricing tailored to your specific needs and budget</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light rounded p-5">
+                        <h5 class="mb-4"><i class="fas fa-phone-alt me-2 text-primary"></i>Need Help?</h5>
+                        <p class="mb-3">Prefer to speak with us directly?</p>
+                        <p class="mb-2"><i class="fas fa-phone text-primary me-2"></i><strong>Call us:</strong><br>+1
+                            (214) 347-6392</p>
+                        <p class="mb-2"><i
+                                class="fas fa-envelope text-primary me-2"></i><strong>Email:</strong><br>gloriasoto720@gmail.com
+                        </p>
+                        <p class="mb-0"><i
+                                class="fas fa-clock text-primary me-2"></i><strong>Hours:</strong><br>Mon-Sat: 9 AM - 7
+                            PM<br>Sunday: By Appointment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+    <!-- Service Highlights Start -->
+    <div class="container-xxl py-6 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="text-light text-uppercase mb-2">✨ Why Choose Us</p>
+                <h2 class="display-6 mb-4">What Makes Us Special</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-white rounded h-100 p-5 text-center">
+                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                            <i class="fas fa-award fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mb-3">Professional Excellence</h5>
+                        <p class="mb-0">Years of experience creating stunning events with attention to every detail</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-white rounded h-100 p-5 text-center">
+                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                            <i class="fas fa-palette fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mb-3">Custom Designs</h5>
+                        <p class="mb-0">Personalized decorations tailored to your unique vision and style</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-white rounded h-100 p-5 text-center">
+                        <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                            <i class="fas fa-handshake fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mb-3">Full Service Support</h5>
+                        <p class="mb-0">From setup to teardown, we handle everything so you can enjoy your event</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service Highlights End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Office Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (214) 347-6392</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i> gloriasoto720@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="index.html#about">About Us</a>
+                    <a class="btn btn-link" href="index.html#services">Our Services</a>
+                    <a class="btn btn-link" href="index.html#event-services">Event Services</a>
+                    <a class="btn btn-link" href="index.html#team">Team</a>
+                    <a class="btn btn-link" href="index.html#testimonials">Client Reviews</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Navigation</h4>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="decorations.html">Decorations</a>
+                    <a class="btn btn-link" href="snack-carts.html">Snack Carts</a>
+<a class="btn btn-link" href="terms.html">Terms</a>
+                    <a class="btn btn-link" href="booking.html">Booking</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Photo Gallery</h4>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-1.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-5.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-9.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-17.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-21.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-28.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Sisu Luxury Events</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">Brahm Gallrdo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Event Booking Scripts -->
+    <script src="js/alertService.js"></script>
+    <script src="js/apiService.js"></script>
+    <script src="js/captchaService.js"></script>
+    <script src="js/bookingService.js"></script>
+    <script src="js/eventStorage.js"></script>
+    <script src="js/eventCart.js"></script>
+    <script src="js/serviceModal.js"></script>
+    <script src="js/eventBadge.js"></script>
+    <script src="js/bookingPage.js"></script>
+</body>
+
+</html>

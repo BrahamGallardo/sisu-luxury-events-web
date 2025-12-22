@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin - Sisu Luxury Events</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon.jpg" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Ardhelia Font -->
+    <style>
+        @font-face {
+            font-family: 'Ardhelia';
+            src: url('fonts/Ardhelia.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <img src="img/image.png" alt="Sisu Luxury Decor" class="navbar-logo">
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="decorations.html" class="nav-item nav-link">Decorations</a>
+                <a href="snack-carts.html" class="nav-item nav-link">Snack Carts</a>
+                <a href="terms.html" class="nav-item nav-link">Terms</a>
+                <a href="booking.html" class="nav-item nav-link">Booking</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="admin.html" class="nav-item nav-link active">Admin</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-light animated slideInDown mb-3">Admin</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-light" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Admin</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Admin Start -->
+    <div class="container-fluid py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-light rounded p-4 p-lg-5">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">Event Bookings</h2>
+                            <button id="logoutButton" class="btn btn-danger">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </button>
+                        </div>
+
+                        <!-- Bookings Table -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Bookings List</h5>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-sm btn-outline-primary active" data-status="all">All</button>
+                                            <button type="button" class="btn btn-sm btn-outline-warning" data-status="Pending">Pending</button>
+                                            <button type="button" class="btn btn-sm btn-outline-success" data-status="Confirmed">Confirmed</button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-status="Cancelled">Cancelled</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-status="Completed">Completed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Customer</th>
+                                                <th>Event Type</th>
+                                                <th>Event Date</th>
+                                                <th>Guests</th>
+                                                <th>Status</th>
+                                                <th>Created</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bookingsTableBody">
+                                            <tr>
+                                                <td colspan="8" class="text-center py-4">
+                                                    <div class="spinner-border text-primary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                    <p class="mt-2">Loading bookings...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <p class="mb-0" id="paginationInfo">Showing 0 of 0 bookings</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav>
+                                            <ul class="pagination justify-content-end mb-0" id="pagination">
+                                                <!-- Pagination will be generated here -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin End -->
+
+    <!-- Booking Details Modal -->
+    <div class="modal fade" id="bookingDetailsModal" tabindex="-1" aria-labelledby="bookingDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookingDetailsModalLabel"><i class="fas fa-file-alt me-2"></i>Booking Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bookingDetailsContent">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="invoiceModalLabel"><i class="fas fa-file-invoice me-2"></i>Generate Invoice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="invoiceForm">
+                        <input type="hidden" id="invoiceBookingId">
+
+                        <!-- Customer and Event Info (Read-only) -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6 class="text-primary">Customer Information</h6>
+                                <p class="mb-1" id="invoiceCustomerName"></p>
+                                <p class="mb-1" id="invoiceCustomerEmail"></p>
+                                <p class="mb-1" id="invoiceCustomerPhone"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-primary">Event Details</h6>
+                                <p class="mb-1" id="invoiceEventType"></p>
+                                <p class="mb-1" id="invoiceEventDate"></p>
+                                <p class="mb-1" id="invoiceGuests"></p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Invoice Items (Services with price input) -->
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-3">Invoice Items</h6>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Description</th>
+                                            <th width="100">Quantity</th>
+                                            <th width="150">Unit Price ($)</th>
+                                            <th width="150">Total ($)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="invoiceItemsTable">
+                                        <!-- Items will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Invoice Totals -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="invoiceTax" class="form-label">Tax (%)</label>
+                                    <input type="number" class="form-control" id="invoiceTax" min="0" max="100" step="0.01" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="invoiceDiscount" class="form-label">Discount ($)</label>
+                                    <input type="number" class="form-control" id="invoiceDiscount" min="0" step="0.01" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="invoiceNotes" class="form-label">Notes</label>
+                                    <textarea class="form-control" id="invoiceNotes" rows="3" placeholder="Additional notes..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="text-primary mb-3">Invoice Summary</h6>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Subtotal:</span>
+                                            <strong id="invoiceSubtotal">$0.00</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Tax:</span>
+                                            <strong id="invoiceTaxAmount">$0.00</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Discount:</span>
+                                            <strong id="invoiceDiscountAmount">$0.00</strong>
+                                        </div>
+                                        <hr>
+                                        <div class="d-flex justify-content-between">
+                                            <h5>Total:</h5>
+                                            <h5 class="text-primary" id="invoiceTotal">$0.00</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-info" id="previewInvoiceBtn">
+                        <i class="fas fa-eye me-2"></i>Preview PDF
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveInvoiceBtn">
+                        <i class="fas fa-save me-2"></i>Save Invoice
+                    </button>
+                    <button type="button" class="btn btn-success" id="printInvoiceBtn">
+                        <i class="fas fa-print me-2"></i>Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Office Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (214) 347-6392</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i> gloriasoto720@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="index.html#about">About Us</a>
+                    <a class="btn btn-link" href="index.html#services">Our Services</a>
+                    <a class="btn btn-link" href="index.html#event-services">Event Services</a>
+                    <a class="btn btn-link" href="index.html#team">Team</a>
+                    <a class="btn btn-link" href="index.html#testimonials">Client Reviews</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Navigation</h4>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="decorations.html">Decorations</a>
+                    <a class="btn btn-link" href="snack-carts.html">Snack Carts</a>
+                    <a class="btn btn-link" href="terms.html">Terms</a>
+                    <a class="btn btn-link" href="booking.html">Booking</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Photo Gallery</h4>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-1.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-5.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-9.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-17.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-21.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-28.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Sisu Luxury Events</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">Brahm Gallrdo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Alert Service -->
+    <script src="js/alertService.js"></script>
+
+    <!-- API Service -->
+    <script src="js/apiService.js"></script>
+
+    <!-- Auth Service -->
+    <script src="js/authService.js"></script>
+
+    <!-- Booking Admin Service -->
+    <script src="js/bookingAdminService.js"></script>
+
+    <!-- Invoice Service -->
+    <script src="js/invoiceService.js"></script>
+
+    <!-- Admin Script -->
+    <script>
+        // Inicializar servicios
+        const authService = new AuthService();
+        const bookingService = new BookingAdminService(authService);
+        const invoiceService = new InvoiceService(authService);
+
+        // Proteger la página - redirigir a login si no hay sesión
+        authService.requireAuth('login.html');
+
+        // Variables de estado
+        let currentPage = 1;
+        let currentStatus = 'all';
+        const pageSize = 15;
+
+        // Manejar el botón de logout
+        document.getElementById('logoutButton').addEventListener('click', async function() {
+            const confirmed = await alertService.confirm(
+                'Logout',
+                'Are you sure you want to logout?',
+                {
+                    confirmButtonText: 'Yes, logout',
+                    cancelButtonText: 'Cancel'
+                }
+            );
+
+            if (confirmed) {
+                const button = this;
+                button.disabled = true;
+                button.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Logging out...';
+
+                try {
+                    await authService.logout();
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+
+        // Cargar bookings
+        async function loadBookings(page = 1, status = 'all') {
+            try {
+                currentPage = page;
+                currentStatus = status;
+
+                const tbody = document.getElementById('bookingsTableBody');
+                tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Loading bookings...</p></td></tr>';
+
+                let result;
+                if (status === 'all') {
+                    result = await bookingService.getBookings(page, pageSize);
+                } else {
+                    result = await bookingService.getBookingsByStatus(status, page, pageSize);
+                }
+
+                if (result.success) {
+                    displayBookings(result.data);
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4 text-danger">Error loading bookings: ' + result.error + '</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading bookings:', error);
+                document.getElementById('bookingsTableBody').innerHTML = '<tr><td colspan="8" class="text-center py-4 text-danger">Error loading bookings</td></tr>';
+            }
+        }
+
+        // Mostrar bookings en la tabla
+        function displayBookings(data) {
+            const tbody = document.getElementById('bookingsTableBody');
+
+            if (!data.items || data.items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4">No bookings found</td></tr>';
+                updatePaginationInfo(0, 0, 0, 0);
+                return;
+            }
+
+            tbody.innerHTML = data.items.map(booking => `
+                <tr>
+                    <td>${booking.id}</td>
+                    <td>
+                        <strong>${booking.fullName}</strong><br>
+                        <small class="text-muted">${booking.email}</small>
+                    </td>
+                    <td>${booking.eventType}</td>
+                    <td>${bookingService.formatDate(booking.eventDate)}</td>
+                    <td>${booking.guestCount}</td>
+                    <td><span class="badge ${bookingService.getStatusBadgeClass(booking.status)}">${booking.status}</span></td>
+                    <td><small>${bookingService.formatDateTime(booking.createdDate)}</small></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1" onclick="viewBookingDetails(${booking.id})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-sm btn-success" onclick="generateInvoice(${booking.id})">
+                            <i class="fas fa-file-invoice"></i> Invoice
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            updatePaginationInfo(data.pageIndex, data.pageSize, data.totalCount, data.totalPages);
+            renderPagination(data.pageIndex, data.totalPages);
+        }
+
+        // Actualizar información de paginación
+        function updatePaginationInfo(pageIndex, pageSize, totalCount, totalPages) {
+            const start = totalCount > 0 ? ((pageIndex - 1) * pageSize) + 1 : 0;
+            const end = Math.min(pageIndex * pageSize, totalCount);
+            document.getElementById('paginationInfo').textContent = `Showing ${start}-${end} of ${totalCount} bookings`;
+        }
+
+        // Renderizar paginación
+        function renderPagination(currentPage, totalPages) {
+            const pagination = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+
+            // Previous button
+            html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="loadBookings(${currentPage - 1}, '${currentStatus}'); return false;">Previous</a>
+            </li>`;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    html += `<li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" onclick="loadBookings(${i}, '${currentStatus}'); return false;">${i}</a>
+                    </li>`;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+
+            // Next button
+            html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="loadBookings(${currentPage + 1}, '${currentStatus}'); return false;">Next</a>
+            </li>`;
+
+            pagination.innerHTML = html;
+        }
+
+        // Ver detalles del booking
+        async function viewBookingDetails(bookingId) {
+            const modal = new bootstrap.Modal(document.getElementById('bookingDetailsModal'));
+            const content = document.getElementById('bookingDetailsContent');
+
+            content.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>';
+            modal.show();
+
+            try {
+                const result = await bookingService.getBookingById(bookingId);
+
+                if (result.success) {
+                    displayBookingDetails(result.data);
+                } else {
+                    content.innerHTML = '<div class="alert alert-danger">Error loading booking details: ' + result.error + '</div>';
+                }
+            } catch (error) {
+                console.error('Error loading booking details:', error);
+                content.innerHTML = '<div class="alert alert-danger">Error loading booking details</div>';
+            }
+        }
+
+        // Mostrar detalles del booking en el modal
+        function displayBookingDetails(booking) {
+            const content = document.getElementById('bookingDetailsContent');
+
+            content.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Customer Information</h6>
+                        <p><strong>Name:</strong> ${booking.fullName}</p>
+                        <p><strong>Email:</strong> ${booking.email}</p>
+                        <p><strong>Phone:</strong> ${booking.phone}</p>
+                        ${booking.city ? `<p><strong>City:</strong> ${booking.city}</p>` : ''}
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Event Details</h6>
+                        <p><strong>Event Type:</strong> ${booking.eventType}</p>
+                        <p><strong>Event Date:</strong> ${bookingService.formatDate(booking.eventDate)}</p>
+                        ${booking.eventTime ? `<p><strong>Event Time:</strong> ${booking.eventTime}</p>` : ''}
+                        <p><strong>Guest Count:</strong> ${booking.guestCount}</p>
+                        ${booking.venue ? `<p><strong>Venue:</strong> ${booking.venue}</p>` : ''}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="text-primary">Additional Information</h6>
+                        ${booking.budget ? `<p><strong>Budget:</strong> ${booking.budget}</p>` : ''}
+                        ${booking.hearAbout ? `<p><strong>How they heard about us:</strong> ${booking.hearAbout}</p>` : ''}
+                        ${booking.additionalDetails ? `<p><strong>Additional Details:</strong><br>${booking.additionalDetails}</p>` : ''}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="text-primary mb-3">Services</h6>
+                        ${booking.services && booking.services.length > 0 ?
+                            booking.services.map(service => `
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                ${service.image ?
+                                                    `<img src="${service.image}" class="img-fluid rounded" alt="${service.name}">`
+                                                    : '<div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 100px;"><i class="fas fa-image fa-3x text-muted"></i></div>'}
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h6 class="mb-2">${service.name}</h6>
+                                                <p class="mb-1"><strong>Type:</strong> ${service.type}</p>
+                                                <p class="mb-1"><strong>Quantity:</strong> ${service.quantity}</p>
+                                                <p class="mb-1"><strong>Duration:</strong> ${service.duration} hours</p>
+                                                ${service.notes ? `<p class="mb-1"><strong>Notes:</strong> ${service.notes}</p>` : ''}
+                                                ${service.extras && service.extras.length > 0 ?
+                                                    `<div class="mt-2">
+                                                        <strong>Extras:</strong>
+                                                        <div class="d-flex flex-wrap gap-1 mt-1">
+                                                            ${service.extras.map(e => `<span class="badge bg-info">${e.name}</span>`).join('')}
+                                                        </div>
+                                                    </div>`
+                                                    : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')
+                            : '<p class="text-muted">No services</p>'}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="bookingStatus" class="form-label"><strong>Status:</strong></label>
+                            <select class="form-select" id="bookingStatus" data-booking-id="${booking.id}" data-current-status="${booking.status}">
+                                <option value="Pending" ${booking.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Confirmed" ${booking.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                                <option value="Cancelled" ${booking.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                <option value="Completed" ${booking.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </div>
+                        <p><strong>Created:</strong> ${bookingService.formatDateTime(booking.createdDate)}</p>
+                        <p><strong>Last Updated:</strong> ${bookingService.formatDateTime(booking.updatedDate)}</p>
+                    </div>
+                </div>
+            `;
+
+            // Agregar event listener para el cambio de status
+            const statusSelect = document.getElementById('bookingStatus');
+            if (statusSelect) {
+                statusSelect.addEventListener('change', async function() {
+                    const newStatus = this.value;
+                    const currentStatus = this.getAttribute('data-current-status');
+                    const bookingId = parseInt(this.getAttribute('data-booking-id'));
+
+                    if (newStatus !== currentStatus) {
+                        await handleStatusChange(bookingId, newStatus, currentStatus, this);
+                    }
+                });
+            }
+        }
+
+        // Manejar cambio de status
+        async function handleStatusChange(bookingId, newStatus, currentStatus, selectElement) {
+            // Mostrar alerta de confirmación
+            const confirmed = await alertService.confirm(
+                'Update Booking Status',
+                `Are you sure you want to change the status from "${currentStatus}" to "${newStatus}"?`,
+                {
+                    confirmButtonText: 'Yes, update it',
+                    cancelButtonText: 'Cancel',
+                    icon: 'question'
+                }
+            );
+
+            if (!confirmed) {
+                // Revertir el select al valor anterior
+                selectElement.value = currentStatus;
+                return;
+            }
+
+            // Deshabilitar el select mientras se actualiza
+            selectElement.disabled = true;
+
+            try {
+                const result = await bookingService.updateBookingStatus(bookingId, newStatus);
+
+                if (result.success) {
+                    // Actualizar el atributo data-current-status
+                    selectElement.setAttribute('data-current-status', newStatus);
+
+                    // Mostrar mensaje de éxito
+                    await alertService.success('Success!', `Booking status updated to "${newStatus}"`);
+
+                    // Recargar la tabla después de cerrar la alerta
+                    loadBookings(currentPage, 'all');
+                } else {
+                    await alertService.error('Error', 'Error updating booking status: ' + result.error);
+                    // Revertir el select al valor anterior
+                    selectElement.value = currentStatus;
+                }
+            } catch (error) {
+                console.error('Error updating booking status:', error);
+                await alertService.error('Error', 'An error occurred while updating the booking status');
+                // Revertir el select al valor anterior
+                selectElement.value = currentStatus;
+            } finally {
+                // Rehabilitar el select
+                selectElement.disabled = false;
+            }
+        }
+
+        // Manejar filtros de estado
+        document.querySelectorAll('[data-status]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('[data-status]').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const status = this.getAttribute('data-status');
+                loadBookings(1, status);
+            });
+        });
+
+        // Cargar bookings al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBookings(1, 'all');
+        });
+
+        // Variables para almacenar el estado actual
+        let currentInvoiceBooking = null;
+        let currentInvoice = null;
+        let isEditMode = false;
+
+        // Generar o editar invoice
+        async function generateInvoice(bookingId) {
+            const modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+
+            try {
+                // Primero verificar si ya existe un invoice para este booking
+                const invoiceResult = await invoiceService.getInvoiceByBookingId(bookingId);
+
+                if (invoiceResult.success && invoiceResult.data) {
+                    // Invoice ya existe - cargar para edición
+                    currentInvoice = invoiceResult.data;
+                    isEditMode = true;
+
+                    // Cargar datos del booking
+                    const bookingResult = await bookingService.getBookingById(bookingId);
+                    if (bookingResult.success) {
+                        currentInvoiceBooking = bookingResult.data;
+                        populateInvoiceModalWithExisting(currentInvoiceBooking, currentInvoice);
+                        modal.show();
+                    } else {
+                        await alertService.error('Error', 'Error loading booking details');
+                    }
+                } else {
+                    // No existe invoice - crear nuevo
+                    currentInvoice = null;
+                    isEditMode = false;
+
+                    const bookingResult = await bookingService.getBookingById(bookingId);
+                    if (bookingResult.success) {
+                        currentInvoiceBooking = bookingResult.data;
+                        populateInvoiceModal(currentInvoiceBooking);
+                        modal.show();
+                    } else {
+                        await alertService.error('Error', 'Error loading booking details: ' + bookingResult.error);
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading invoice/booking:', error);
+                await alertService.error('Error', 'Error loading data');
+            }
+        }
+
+        // Poblar modal de invoice con datos del booking
+        function populateInvoiceModal(booking) {
+            document.getElementById('invoiceBookingId').value = booking.id;
+
+            // Customer info
+            document.getElementById('invoiceCustomerName').textContent = 'Name: ' + booking.fullName;
+            document.getElementById('invoiceCustomerEmail').textContent = 'Email: ' + booking.email;
+            document.getElementById('invoiceCustomerPhone').textContent = 'Phone: ' + booking.phone;
+
+            // Event info
+            document.getElementById('invoiceEventType').textContent = 'Event Type: ' + booking.eventType;
+            document.getElementById('invoiceEventDate').textContent = 'Event Date: ' + bookingService.formatDate(booking.eventDate);
+            document.getElementById('invoiceGuests').textContent = 'Guests: ' + booking.guestCount;
+
+            // Populate invoice items from services
+            const itemsTable = document.getElementById('invoiceItemsTable');
+            itemsTable.innerHTML = '';
+
+            if (booking.services && booking.services.length > 0) {
+                booking.services.forEach((service, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            ${service.name}
+                            ${service.extras && service.extras.length > 0 ?
+                                '<br><small class="text-muted">Extras: ' + service.extras.map(e => e.name).join(', ') + '</small>'
+                                : ''}
+                        </td>
+                        <td><input type="number" class="form-control form-control-sm" value="${service.quantity}" readonly></td>
+                        <td><input type="number" class="form-control form-control-sm item-price" data-index="${index}" min="0" step="0.01" value="0"></td>
+                        <td class="item-total">$0.00</td>
+                    `;
+                    itemsTable.appendChild(row);
+                });
+
+                // Agregar event listeners para calcular totales
+                document.querySelectorAll('.item-price').forEach(input => {
+                    input.addEventListener('input', calculateInvoiceTotals);
+                });
+            }
+
+            // Reset totals
+            document.getElementById('invoiceTax').value = 0;
+            document.getElementById('invoiceDiscount').value = 0;
+            document.getElementById('invoiceNotes').value = '';
+
+            // Reset modal title for new invoice
+            document.getElementById('invoiceModalLabel').innerHTML = '<i class="fas fa-file-invoice me-2"></i>Generate Invoice';
+
+            calculateInvoiceTotals();
+        }
+
+        // Poblar modal con invoice existente
+        function populateInvoiceModalWithExisting(booking, invoice) {
+            document.getElementById('invoiceBookingId').value = booking.id;
+
+            // Customer info
+            document.getElementById('invoiceCustomerName').textContent = 'Name: ' + booking.fullName;
+            document.getElementById('invoiceCustomerEmail').textContent = 'Email: ' + booking.email;
+            document.getElementById('invoiceCustomerPhone').textContent = 'Phone: ' + booking.phone;
+
+            // Event info
+            document.getElementById('invoiceEventType').textContent = 'Event Type: ' + booking.eventType;
+            document.getElementById('invoiceEventDate').textContent = 'Event Date: ' + bookingService.formatDate(booking.eventDate);
+            document.getElementById('invoiceGuests').textContent = 'Guests: ' + booking.guestCount;
+
+            // Populate invoice items with saved prices
+            const itemsTable = document.getElementById('invoiceItemsTable');
+            itemsTable.innerHTML = '';
+
+            if (invoice.items && invoice.items.length > 0) {
+                invoice.items.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.description}</td>
+                        <td><input type="number" class="form-control form-control-sm" value="${item.quantity}" readonly></td>
+                        <td><input type="number" class="form-control form-control-sm item-price" data-index="${index}" data-item-id="${item.id}" min="0" step="0.01" value="${item.unitPrice}"></td>
+                        <td class="item-total">$${item.total.toFixed(2)}</td>
+                    `;
+                    itemsTable.appendChild(row);
+                });
+
+                // Agregar event listeners para calcular totales
+                document.querySelectorAll('.item-price').forEach(input => {
+                    input.addEventListener('input', calculateInvoiceTotals);
+                });
+            }
+
+            // Set saved values
+            const taxPercentage = invoice.subtotal > 0 ? (invoice.tax / invoice.subtotal) * 100 : 0;
+            document.getElementById('invoiceTax').value = taxPercentage.toFixed(2);
+            document.getElementById('invoiceDiscount').value = invoice.discount;
+            document.getElementById('invoiceNotes').value = invoice.notes || '';
+
+            // Update modal title to show edit mode
+            document.getElementById('invoiceModalLabel').innerHTML = '<i class="fas fa-edit me-2"></i>Edit Invoice - ' + invoice.invoiceNumber;
+
+            calculateInvoiceTotals();
+        }
+
+        // Calcular totales del invoice
+        function calculateInvoiceTotals() {
+            let subtotal = 0;
+
+            // Calculate item totals
+            document.querySelectorAll('.item-price').forEach((input, index) => {
+                const row = input.closest('tr');
+                const quantity = parseFloat(row.querySelector('input[readonly]').value) || 0;
+                const unitPrice = parseFloat(input.value) || 0;
+                const itemTotal = quantity * unitPrice;
+
+                row.querySelector('.item-total').textContent = '$' + itemTotal.toFixed(2);
+                subtotal += itemTotal;
+            });
+
+            const tax = parseFloat(document.getElementById('invoiceTax').value) || 0;
+            const discount = parseFloat(document.getElementById('invoiceDiscount').value) || 0;
+
+            const taxAmount = subtotal * (tax / 100);
+            const total = subtotal + taxAmount - discount;
+
+            document.getElementById('invoiceSubtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('invoiceTaxAmount').textContent = '$' + taxAmount.toFixed(2);
+            document.getElementById('invoiceDiscountAmount').textContent = '$' + discount.toFixed(2);
+            document.getElementById('invoiceTotal').textContent = '$' + total.toFixed(2);
+        }
+
+        // Event listeners para tax y discount
+        document.getElementById('invoiceTax').addEventListener('input', calculateInvoiceTotals);
+        document.getElementById('invoiceDiscount').addEventListener('input', calculateInvoiceTotals);
+
+        // Guardar invoice
+        document.getElementById('saveInvoiceBtn').addEventListener('click', async function() {
+            if (!currentInvoiceBooking) return;
+
+            const button = this;
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Saving...';
+
+            try {
+                // Recolectar items del invoice
+                const items = [];
+                document.querySelectorAll('.item-price').forEach((input, index) => {
+                    const row = input.closest('tr');
+                    const quantity = parseFloat(row.querySelector('input[readonly]').value) || 0;
+                    const unitPrice = parseFloat(input.value) || 0;
+                    const total = quantity * unitPrice;
+                    const itemId = input.getAttribute('data-item-id'); // Obtener el ID si existe
+                    const description = row.querySelector('td:first-child').textContent.trim();
+
+                    const item = {
+                        description: description,
+                        quantity: quantity,
+                        unitPrice: unitPrice,
+                        total: total
+                    };
+
+                    // Si existe ID (modo edición), incluirlo
+                    if (itemId) {
+                        item.id = parseInt(itemId);
+                    }
+
+                    items.push(item);
+                });
+
+                const subtotal = parseFloat(document.getElementById('invoiceSubtotal').textContent.replace('$', '')) || 0;
+                const taxAmount = parseFloat(document.getElementById('invoiceTaxAmount').textContent.replace('$', '')) || 0;
+                const discount = parseFloat(document.getElementById('invoiceDiscount').value) || 0;
+                const total = parseFloat(document.getElementById('invoiceTotal').textContent.replace('$', '')) || 0;
+
+                const invoiceData = {
+                    eventBookingId: currentInvoiceBooking.id,
+                    invoiceNumber: isEditMode && currentInvoice ? currentInvoice.invoiceNumber : invoiceService.generateInvoiceNumber(),
+                    invoiceDate: isEditMode && currentInvoice ? currentInvoice.invoiceDate : new Date().toISOString(),
+                    subtotal: subtotal,
+                    tax: taxAmount,
+                    discount: discount,
+                    total: total,
+                    paymentStatus: isEditMode && currentInvoice ? currentInvoice.paymentStatus : 'Pending',
+                    notes: document.getElementById('invoiceNotes').value,
+                    items: items
+                };
+
+                let result;
+                if (isEditMode && currentInvoice) {
+                    // Update existing invoice
+                    result = await invoiceService.updateInvoice(currentInvoice.id, invoiceData);
+                    if (result.success) {
+                        await alertService.success('Success!', 'Invoice updated successfully!');
+                        // Update current invoice with new data
+                        currentInvoice = result.data;
+                    } else {
+                        await alertService.error('Error', 'Error updating invoice: ' + result.error);
+                    }
+                } else {
+                    // Create new invoice
+                    result = await invoiceService.createInvoice(invoiceData);
+                    if (result.success) {
+                        await alertService.success('Success!', 'Invoice saved successfully!');
+                        // Switch to edit mode with the new invoice
+                        currentInvoice = result.data;
+                        isEditMode = true;
+                    } else {
+                        await alertService.error('Error', 'Error saving invoice: ' + result.error);
+                    }
+                }
+            } catch (error) {
+                console.error('Error saving invoice:', error);
+                await alertService.error('Error', 'An error occurred while saving the invoice');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '<i class="fas fa-save me-2"></i>Save Invoice';
+            }
+        });
+
+        // Función helper para obtener datos del invoice actual
+        function getCurrentInvoiceData() {
+            const items = [];
+            document.querySelectorAll('.item-price').forEach((input, index) => {
+                const row = input.closest('tr');
+                const quantity = parseFloat(row.querySelector('input[readonly]').value) || 0;
+                const unitPrice = parseFloat(input.value) || 0;
+                const total = quantity * unitPrice;
+
+                // Obtener descripción del input o del invoice existente
+                const description = row.querySelector('td:first-child').textContent.trim();
+
+                items.push({
+                    description: description,
+                    quantity: quantity,
+                    unitPrice: unitPrice,
+                    total: total
+                });
+            });
+
+            const subtotal = parseFloat(document.getElementById('invoiceSubtotal').textContent.replace('$', '')) || 0;
+            const taxAmount = parseFloat(document.getElementById('invoiceTaxAmount').textContent.replace('$', '')) || 0;
+            const discount = parseFloat(document.getElementById('invoiceDiscount').value) || 0;
+            const total = parseFloat(document.getElementById('invoiceTotal').textContent.replace('$', '')) || 0;
+
+            return {
+                invoiceNumber: isEditMode && currentInvoice ? currentInvoice.invoiceNumber : invoiceService.generateInvoiceNumber(),
+                invoiceDate: isEditMode && currentInvoice ? currentInvoice.invoiceDate : new Date().toISOString(),
+                subtotal: subtotal,
+                tax: taxAmount,
+                discount: discount,
+                total: total,
+                notes: document.getElementById('invoiceNotes').value,
+                items: items
+            };
+        }
+
+        // Preview PDF - Abre en nueva pestaña con diseño completo del invoice
+        document.getElementById('previewInvoiceBtn').addEventListener('click', function() {
+            if (!currentInvoiceBooking) return;
+
+            const invoiceData = getCurrentInvoiceData();
+            invoiceService.generatePDFPreview(invoiceData, currentInvoiceBooking);
+        });
+
+        // Print - Abre diálogo de impresión
+        document.getElementById('printInvoiceBtn').addEventListener('click', function() {
+            if (!currentInvoiceBooking) return;
+
+            const invoiceData = getCurrentInvoiceData();
+            invoiceService.generatePDFForPrint(invoiceData, currentInvoiceBooking);
+        });
+
+        // Exponer funciones globalmente
+        window.viewBookingDetails = viewBookingDetails;
+        window.loadBookings = loadBookings;
+        window.generateInvoice = generateInvoice;
+    </script>
+</body>
+
+</html>
