@@ -45,6 +45,50 @@
 
     <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+    <!-- Custom Admin Styles -->
+    <style>
+        .catalog-download-section {
+            background: linear-gradient(135deg, #faf8f3 0%, #fff5db 100%);
+            border-left: 4px solid #758e57;
+            transition: all 0.3s ease;
+        }
+        
+        .catalog-download-section:hover {
+            box-shadow: 0 4px 15px rgba(117, 142, 87, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .catalog-download-section .card-header {
+            background: linear-gradient(135deg, #758e57 0%, #446e48 100%) !important;
+            border: none;
+        }
+        
+        .catalog-download-section .btn-primary {
+            background: linear-gradient(135deg, #758e57 0%, #446e48 100%);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(117, 142, 87, 0.3);
+        }
+        
+        .catalog-download-section .btn-primary:hover {
+            background: linear-gradient(135deg, #ffcd35 0%, #ffb800 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 205, 53, 0.4);
+        }
+        
+        .catalog-download-section .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .catalog-download-section .text-primary {
+            color: #758e57 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -166,6 +210,32 @@
                                                 <!-- Pagination will be generated here -->
                                             </ul>
                                         </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Catalog PDF Download Section -->
+                        <div class="card mt-4 catalog-download-section">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-file-pdf me-2"></i>Open House Catalog</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <h6 class="text-primary mb-3">
+                                            <i class="fas fa-star text-warning me-2"></i>Download Our Complete Catalog
+                                        </h6>
+                                        <p class="text-muted mb-0">
+                                            Generate and download a professional PDF catalog featuring all our premium decorations and snack carts. 
+                                            Perfect for <strong>open houses</strong> and client presentations. The catalog includes high-quality images 
+                                            and detailed descriptions of all our services.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <button id="downloadCatalogBtn" class="btn btn-primary btn-lg">
+                                            <i class="fas fa-download me-2"></i>Download Catalog PDF
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -427,6 +497,15 @@
 
     <!-- Invoice Service -->
     <script src="js/invoiceService.js"></script>
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Catalog PDF Service -->
+    <script src="js/catalogPdfService.js"></script>
+
+    <!-- Venue Package Catalog -->
+    <script src="js/venuePackageCatalog.js"></script>
 
     <!-- Admin Script -->
     <script>
@@ -1081,6 +1160,35 @@
         window.viewBookingDetails = viewBookingDetails;
         window.loadBookings = loadBookings;
         window.generateInvoice = generateInvoice;
+
+        // Catalog PDF Service
+        const catalogPdfService = new CatalogPdfService();
+        const catalog = new VenuePackageCatalog();
+
+        // Manejar descarga del catálogo PDF
+        document.getElementById('downloadCatalogBtn').addEventListener('click', async function() {
+            const button = this;
+            const originalHTML = button.innerHTML;
+            
+            button.disabled = true;
+            button.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Generating PDF...';
+
+            try {
+                const result = await catalogPdfService.generateCatalogPDF(catalog);
+                
+                if (result.success) {
+                    await alertService.success('Success!', 'Catalog PDF generated and downloaded successfully!');
+                } else {
+                    await alertService.error('Error', 'Error generating PDF: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error generating catalog PDF:', error);
+                await alertService.error('Error', 'An error occurred while generating the PDF');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalHTML;
+            }
+        });
     </script>
 </body>
 

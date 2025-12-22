@@ -134,22 +134,6 @@
 
                         <!-- Packages Table -->
                         <div class="card">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6">
-                                        <h5 class="mb-0"><i class="fas fa-box me-2"></i>Packages List</h5>
-                                    </div>
-                                    <div class="col-md-6 text-end">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-sm btn-outline-primary active" data-status="all">All</button>
-                                            <button type="button" class="btn btn-sm btn-outline-warning" data-status="Pending">Pending</button>
-                                            <button type="button" class="btn btn-sm btn-outline-success" data-status="Confirmed">Confirmed</button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger" data-status="Cancelled">Cancelled</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-status="Completed">Completed</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table table-hover mb-0">
@@ -771,15 +755,6 @@
                 <hr>
                 <div class="row">
                     <div class="col-12">
-                        <div class="mb-3">
-                            <label for="packageStatus" class="form-label"><strong>Status:</strong></label>
-                            <select class="form-select" id="packageStatus" data-package-id="${pkg.id}" data-current-status="${pkg.status}">
-                                <option value="Pending" ${pkg.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                                <option value="Confirmed" ${pkg.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
-                                <option value="Cancelled" ${pkg.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
-                                <option value="Completed" ${pkg.status === 'Completed' ? 'selected' : ''}>Completed</option>
-                            </select>
-                        </div>
                         <p><strong>Created:</strong> ${venuePackageService.formatDateTime(pkg.createdDate)}</p>
                         ${pkg.updatedDate ? `<p><strong>Last Updated:</strong> ${venuePackageService.formatDateTime(pkg.updatedDate)}</p>` : ''}
                     </div>
