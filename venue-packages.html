@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Venue Packages - Sisu Luxury Events</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon.jpg" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Ardhelia Font -->
+    <style>
+        @font-face {
+            font-family: 'Ardhelia';
+            src: url('fonts/Ardhelia.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Service Card Selection Styles */
+        .service-card-select {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card-select:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .service-card-select .card-img-top {
+            transition: transform 0.3s;
+        }
+
+        .service-card-select:hover .card-img-top {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <img src="img/image.png" alt="Sisu Luxury Decor" class="navbar-logo">
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About Us</a>
+                <a href="decorations.html" class="nav-item nav-link">Decorations</a>
+                <a href="snack-carts.html" class="nav-item nav-link">Snack Carts</a>
+                <a href="terms.html" class="nav-item nav-link">Terms</a>
+                <a href="booking.html" class="nav-item nav-link">Booking</a>
+                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="admin.html" class="nav-item nav-link">Admin</a>
+                <a href="venue-packages.html" class="nav-item nav-link active">Venue Packages</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center pt-5 pb-3">
+            <h1 class="display-4 text-light animated slideInDown mb-3">Venue Packages</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-light" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Venue Packages</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Venue Packages Start -->
+    <div class="container-fluid py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-light rounded p-4 p-lg-5">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">Venue Packages</h2>
+                            <div>
+                                <button id="addPackageButton" class="btn btn-primary me-2">
+                                    <i class="fas fa-plus me-2"></i>Add New Package
+                                </button>
+                                <button id="logoutButton" class="btn btn-danger">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Packages Table -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <h5 class="mb-0"><i class="fas fa-box me-2"></i>Packages List</h5>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-sm btn-outline-primary active" data-status="all">All</button>
+                                            <button type="button" class="btn btn-sm btn-outline-warning" data-status="Pending">Pending</button>
+                                            <button type="button" class="btn btn-sm btn-outline-success" data-status="Confirmed">Confirmed</button>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-status="Cancelled">Cancelled</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-status="Completed">Completed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Venue</th>
+                                                <th>Package Name</th>
+                                                <th>Contact</th>
+                                                <th>Services</th>
+                                                <th>Status</th>
+                                                <th>Created</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="packagesTableBody">
+                                            <tr>
+                                                <td colspan="8" class="text-center py-4">
+                                                    <div class="spinner-border text-primary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                    <p class="mt-2">Loading packages...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <p class="mb-0" id="paginationInfo">Showing 0 of 0 packages</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <nav>
+                                            <ul class="pagination justify-content-end mb-0" id="pagination">
+                                                <!-- Pagination will be generated here -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Venue Packages End -->
+
+    <!-- Package Details Modal -->
+    <div class="modal fade" id="packageDetailsModal" tabindex="-1" aria-labelledby="packageDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="packageDetailsModalLabel"><i class="fas fa-box me-2"></i>Package Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="packageDetailsContent">
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Package Modal -->
+    <div class="modal fade" id="createPackageModal" tabindex="-1" aria-labelledby="createPackageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPackageModalLabel"><i class="fas fa-plus-circle me-2"></i>Create New Venue Package</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="createPackageForm" novalidate>
+                    <div class="modal-body">
+                        <!-- Validation Errors -->
+                        <div id="packageFormErrors" class="alert alert-danger d-none" role="alert">
+                            <strong>Please fix the following errors:</strong>
+                            <ul id="packageFormErrorsList" class="mb-0"></ul>
+                        </div>
+
+                        <!-- Venue Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="mb-0"><i class="fas fa-building me-2"></i>Venue Information</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="venueName" class="form-label">Venue Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="venueName" required maxlength="200">
+                                        <div class="invalid-feedback">Please provide a venue name.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="contactName" class="form-label">Contact Name</label>
+                                        <input type="text" class="form-control" id="contactName" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="venueAddress" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="venueAddress" maxlength="500">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="venueCity" class="form-label">City</label>
+                                        <input type="text" class="form-control" id="venueCity" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="venuePhone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="venuePhone" maxlength="20" pattern="[0-9+\-() ]+">
+                                        <div class="invalid-feedback">Please provide a valid phone number.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="venueEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="venueEmail" maxlength="255">
+                                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package Details -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="mb-0"><i class="fas fa-box me-2"></i>Package Details</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="packageName" class="form-label">Package Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="packageName" required maxlength="200">
+                                    <div class="invalid-feedback">Please provide a package name.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="packageDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="packageDescription" rows="3" maxlength="2000"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="packageNotes" class="form-label">Notes</label>
+                                    <textarea class="form-control" id="packageNotes" rows="3" maxlength="2000"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Services Selection -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Services <span class="text-danger">*</span></h6>
+                                <button type="button" class="btn btn-sm btn-light" onclick="openProductSelector()">
+                                    <i class="fas fa-plus me-1"></i>Add Service
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="productsList" class="mb-3">
+                                    <p class="text-muted text-center py-3">No services added yet. Click "Add Service" to start.</p>
+                                </div>
+                                <div id="productsError" class="alert alert-warning d-none" role="alert">
+                                    At least one service is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submitPackageBtn">
+                            <i class="fas fa-save me-2"></i>Create Package
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Quick Select Modal -->
+    <div class="modal fade" id="serviceQuickSelectModal" tabindex="-1" aria-labelledby="serviceQuickSelectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serviceQuickSelectModalLabel"><i class="fas fa-th me-2"></i>Select Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="serviceTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-services" type="button" role="tab">
+                                <i class="fas fa-th me-1"></i>All Services
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="decorations-tab" data-bs-toggle="tab" data-bs-target="#decorations" type="button" role="tab">
+                                <i class="fas fa-star me-1"></i>Decorations
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="snackcarts-tab" data-bs-toggle="tab" data-bs-target="#snackcarts" type="button" role="tab">
+                                <i class="fas fa-ice-cream me-1"></i>Snack Carts
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="serviceTabsContent">
+                        <div class="tab-pane fade show active" id="all-services" role="tabpanel">
+                            <div class="row g-3" id="allServicesGrid">
+                                <!-- Services will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="decorations" role="tabpanel">
+                            <div class="row g-3" id="decorationsGrid">
+                                <!-- Decorations will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="snackcarts" role="tabpanel">
+                            <div class="row g-3" id="snackcartsGrid">
+                                <!-- Snack Carts will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Configuration Modal -->
+    <div class="modal fade" id="productConfigModal" tabindex="-1" aria-labelledby="productConfigModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productConfigModalLabel"><i class="fas fa-cog me-2"></i>Configure Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="productConfigForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="configProductId">
+                        <input type="hidden" id="configProductName">
+                        <input type="hidden" id="configProductType">
+                        <input type="hidden" id="configProductImage">
+
+                        <div class="mb-3 text-center">
+                            <img id="configProductImagePreview" src="" alt="Service" class="img-fluid rounded mb-2" style="max-height: 200px;">
+                            <h6 id="configProductNamePreview"></h6>
+                            <span id="configProductTypePreview" class="badge"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="configProductQuantity" class="form-label">Quantity <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="configProductQuantity" min="1" value="1" required>
+                                <div class="invalid-feedback">Quantity must be at least 1.</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="configProductDuration" class="form-label">Duration (hours)</label>
+                                <input type="number" class="form-control" id="configProductDuration" min="0">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="configProductNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="configProductNotes" rows="3" maxlength="1000"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add to Package</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer my-6 mb-0 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Office Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+1 (214) 347-6392</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i> gloriasoto720@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Quick Links</h4>
+                    <a class="btn btn-link" href="index.html#about">About Us</a>
+                    <a class="btn btn-link" href="index.html#services">Our Services</a>
+                    <a class="btn btn-link" href="index.html#event-services">Event Services</a>
+                    <a class="btn btn-link" href="index.html#team">Team</a>
+                    <a class="btn btn-link" href="index.html#testimonials">Client Reviews</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Navigation</h4>
+                    <a class="btn btn-link" href="about.html">About Us</a>
+                    <a class="btn btn-link" href="decorations.html">Decorations</a>
+                    <a class="btn btn-link" href="snack-carts.html">Snack Carts</a>
+                    <a class="btn btn-link" href="terms.html">Terms</a>
+                    <a class="btn btn-link" href="booking.html">Booking</a>
+                    <a class="btn btn-link" href="contact.html">Contact Us</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Photo Gallery</h4>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-1.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-5.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-9.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-17.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-21.jpg" alt="Image">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light rounded p-1" src="img/Decorations/decor-28.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a href="#">Sisu Luxury Events</a>, All Right Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <!--/*** This template is free as long as you keep the footer author's credit link/attribution link/backlink. If you'd like to use the template without the footer author's credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">Brahm Gallrdo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Alert Service -->
+    <script src="js/alertService.js"></script>
+
+    <!-- API Service -->
+    <script src="js/apiService.js"></script>
+
+    <!-- Auth Service -->
+    <script src="js/authService.js"></script>
+
+    <!-- Venue Package Admin Service -->
+    <script src="js/venuePackageAdminService.js"></script>
+
+    <!-- Venue Package Catalog -->
+    <script src="js/venuePackageCatalog.js"></script>
+
+    <!-- Venue Packages Script -->
+    <script>
+        // Inicializar servicios
+        const authService = new AuthService();
+        const venuePackageService = new VenuePackageAdminService(authService);
+        const catalog = new VenuePackageCatalog();
+
+        // Proteger la página - redirigir a login si no hay sesión
+        authService.requireAuth('login.html');
+
+        // Variables de estado
+        let currentPage = 1;
+        let currentStatus = 'all';
+        const pageSize = 15;
+
+        // Manejar el botón de logout
+        document.getElementById('logoutButton').addEventListener('click', async function() {
+            const confirmed = await alertService.confirm(
+                'Logout',
+                'Are you sure you want to logout?',
+                {
+                    confirmButtonText: 'Yes, logout',
+                    cancelButtonText: 'Cancel'
+                }
+            );
+
+            if (confirmed) {
+                const button = this;
+                button.disabled = true;
+                button.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Logging out...';
+
+                try {
+                    await authService.logout();
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+
+        // Cargar paquetes
+        async function loadPackages(page = 1, status = 'all') {
+            try {
+                currentPage = page;
+                currentStatus = status;
+
+                const tbody = document.getElementById('packagesTableBody');
+                tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Loading packages...</p></td></tr>';
+
+                let result;
+                if (status === 'all') {
+                    result = await venuePackageService.getVenuePackages(page, pageSize);
+                } else {
+                    result = await venuePackageService.getVenuePackagesByStatus(status, page, pageSize);
+                }
+
+                if (result.success) {
+                    displayPackages(result.data);
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4 text-danger">Error loading packages: ' + result.error + '</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading packages:', error);
+                document.getElementById('packagesTableBody').innerHTML = '<tr><td colspan="8" class="text-center py-4 text-danger">Error loading packages</td></tr>';
+            }
+        }
+
+        // Mostrar paquetes en la tabla
+        function displayPackages(data) {
+            const tbody = document.getElementById('packagesTableBody');
+
+            if (!data.items || data.items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="text-center py-4">No packages found</td></tr>';
+                updatePaginationInfo(0, 0, 0, 0);
+                return;
+            }
+
+            tbody.innerHTML = data.items.map(pkg => `
+                <tr>
+                    <td>${pkg.id}</td>
+                    <td>
+                        <strong>${pkg.venueName}</strong><br>
+                        ${pkg.venueCity ? `<small class="text-muted">${pkg.venueCity}</small>` : ''}
+                    </td>
+                    <td>${pkg.packageName}</td>
+                    <td>
+                        ${pkg.contactName ? `<strong>${pkg.contactName}</strong><br>` : ''}
+                        ${pkg.venueEmail ? `<small class="text-muted">${pkg.venueEmail}</small><br>` : ''}
+                        ${pkg.venuePhone ? `<small class="text-muted">${pkg.venuePhone}</small>` : ''}
+                    </td>
+                    <td>${pkg.services ? pkg.services.length : 0} services</td>
+                    <td><span class="badge ${venuePackageService.getStatusBadgeClass(pkg.status)}">${pkg.status}</span></td>
+                    <td><small>${venuePackageService.formatDateTime(pkg.createdDate)}</small></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" onclick="viewPackageDetails(${pkg.id})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            updatePaginationInfo(data.pageIndex, data.pageSize, data.totalCount, data.totalPages);
+            renderPagination(data.pageIndex, data.totalPages);
+        }
+
+        // Actualizar información de paginación
+        function updatePaginationInfo(pageIndex, pageSize, totalCount, totalPages) {
+            const start = totalCount > 0 ? ((pageIndex - 1) * pageSize) + 1 : 0;
+            const end = Math.min(pageIndex * pageSize, totalCount);
+            document.getElementById('paginationInfo').textContent = `Showing ${start}-${end} of ${totalCount} packages`;
+        }
+
+        // Renderizar paginación
+        function renderPagination(currentPage, totalPages) {
+            const pagination = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+
+            // Previous button
+            html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="loadPackages(${currentPage - 1}, '${currentStatus}'); return false;">Previous</a>
+            </li>`;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    html += `<li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" onclick="loadPackages(${i}, '${currentStatus}'); return false;">${i}</a>
+                    </li>`;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    html += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+
+            // Next button
+            html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="loadPackages(${currentPage + 1}, '${currentStatus}'); return false;">Next</a>
+            </li>`;
+
+            pagination.innerHTML = html;
+        }
+
+        // Ver detalles del paquete
+        async function viewPackageDetails(packageId) {
+            const modal = new bootstrap.Modal(document.getElementById('packageDetailsModal'));
+            const content = document.getElementById('packageDetailsContent');
+
+            content.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>';
+            modal.show();
+
+            try {
+                const result = await venuePackageService.getVenuePackageById(packageId);
+
+                if (result.success) {
+                    displayPackageDetails(result.data);
+                } else {
+                    content.innerHTML = '<div class="alert alert-danger">Error loading package details: ' + result.error + '</div>';
+                }
+            } catch (error) {
+                console.error('Error loading package details:', error);
+                content.innerHTML = '<div class="alert alert-danger">Error loading package details</div>';
+            }
+        }
+
+        // Mostrar detalles del paquete en el modal
+        function displayPackageDetails(pkg) {
+            const content = document.getElementById('packageDetailsContent');
+
+            content.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Venue Information</h6>
+                        <p><strong>Venue Name:</strong> ${pkg.venueName}</p>
+                        ${pkg.venueAddress ? `<p><strong>Address:</strong> ${pkg.venueAddress}</p>` : ''}
+                        ${pkg.venueCity ? `<p><strong>City:</strong> ${pkg.venueCity}</p>` : ''}
+                        ${pkg.venuePhone ? `<p><strong>Phone:</strong> ${pkg.venuePhone}</p>` : ''}
+                        ${pkg.venueEmail ? `<p><strong>Email:</strong> ${pkg.venueEmail}</p>` : ''}
+                        ${pkg.contactName ? `<p><strong>Contact Name:</strong> ${pkg.contactName}</p>` : ''}
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Package Details</h6>
+                        <p><strong>Package Name:</strong> ${pkg.packageName}</p>
+                        ${pkg.description ? `<p><strong>Description:</strong> ${pkg.description}</p>` : ''}
+                        ${pkg.notes ? `<p><strong>Notes:</strong> ${pkg.notes}</p>` : ''}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="text-primary mb-3">Services</h6>
+                        ${pkg.services && pkg.services.length > 0 ?
+                            pkg.services.map(service => `
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                ${service.image ?
+                                                    `<img src="${service.image}" class="img-fluid rounded" alt="${service.name}">`
+                                                    : '<div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 100px;"><i class="fas fa-image fa-3x text-muted"></i></div>'}
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h6 class="mb-2">${service.name}</h6>
+                                                <p class="mb-1"><strong>Type:</strong> ${service.type}</p>
+                                                <p class="mb-1"><strong>Quantity:</strong> ${service.quantity}</p>
+                                                ${service.duration ? `<p class="mb-1"><strong>Duration:</strong> ${service.duration} hours</p>` : ''}
+                                                ${service.notes ? `<p class="mb-1"><strong>Notes:</strong> ${service.notes}</p>` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')
+                            : '<p class="text-muted">No services</p>'}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="packageStatus" class="form-label"><strong>Status:</strong></label>
+                            <select class="form-select" id="packageStatus" data-package-id="${pkg.id}" data-current-status="${pkg.status}">
+                                <option value="Pending" ${pkg.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Confirmed" ${pkg.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                                <option value="Cancelled" ${pkg.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                <option value="Completed" ${pkg.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </div>
+                        <p><strong>Created:</strong> ${venuePackageService.formatDateTime(pkg.createdDate)}</p>
+                        ${pkg.updatedDate ? `<p><strong>Last Updated:</strong> ${venuePackageService.formatDateTime(pkg.updatedDate)}</p>` : ''}
+                    </div>
+                </div>
+            `;
+
+            // Agregar event listener para el cambio de status
+            const statusSelect = document.getElementById('packageStatus');
+            if (statusSelect) {
+                statusSelect.addEventListener('change', async function() {
+                    const newStatus = this.value;
+                    const currentStatus = this.getAttribute('data-current-status');
+                    const packageId = parseInt(this.getAttribute('data-package-id'));
+
+                    if (newStatus !== currentStatus) {
+                        await handleStatusChange(packageId, newStatus, currentStatus, this);
+                    }
+                });
+            }
+        }
+
+        // Manejar cambio de status
+        async function handleStatusChange(packageId, newStatus, currentStatus, selectElement) {
+            // Mostrar alerta de confirmación
+            const confirmed = await alertService.confirm(
+                'Update Package Status',
+                `Are you sure you want to change the status from "${currentStatus}" to "${newStatus}"?`,
+                {
+                    confirmButtonText: 'Yes, update it',
+                    cancelButtonText: 'Cancel',
+                    icon: 'question'
+                }
+            );
+
+            if (!confirmed) {
+                // Revertir el select al valor anterior
+                selectElement.value = currentStatus;
+                return;
+            }
+
+            // Deshabilitar el select mientras se actualiza
+            selectElement.disabled = true;
+
+            try {
+                const result = await venuePackageService.updateVenuePackageStatus(packageId, newStatus);
+
+                if (result.success) {
+                    // Actualizar el atributo data-current-status
+                    selectElement.setAttribute('data-current-status', newStatus);
+
+                    // Mostrar mensaje de éxito
+                    await alertService.success('Success!', `Package status updated to "${newStatus}"`);
+
+                    // Recargar la tabla después de cerrar la alerta
+                    loadPackages(currentPage, 'all');
+                } else {
+                    await alertService.error('Error', 'Error updating package status: ' + result.error);
+                    // Revertir el select al valor anterior
+                    selectElement.value = currentStatus;
+                }
+            } catch (error) {
+                console.error('Error updating package status:', error);
+                await alertService.error('Error', 'An error occurred while updating the package status');
+                // Revertir el select al valor anterior
+                selectElement.value = currentStatus;
+            } finally {
+                // Rehabilitar el select
+                selectElement.disabled = false;
+            }
+        }
+
+        // Manejar filtros de estado
+        document.querySelectorAll('[data-status]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('[data-status]').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const status = this.getAttribute('data-status');
+                loadPackages(1, status);
+            });
+        });
+
+        // Cargar paquetes al iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPackages(1, 'all');
+        });
+
+        // Exponer funciones globalmente
+        window.viewPackageDetails = viewPackageDetails;
+        window.loadPackages = loadPackages;
+
+        // ========== CREATE PACKAGE FUNCTIONALITY ==========
+        
+        // Array para almacenar servicios seleccionados
+        let selectedServices = [];
+
+        // Abrir modal de creación
+        document.getElementById('addPackageButton').addEventListener('click', function() {
+            const modal = new bootstrap.Modal(document.getElementById('createPackageModal'));
+            resetCreatePackageForm();
+            modal.show();
+        });
+
+        // Resetear formulario de creación
+        function resetCreatePackageForm() {
+            document.getElementById('createPackageForm').reset();
+            selectedServices = [];
+            updateServicesList();
+            document.getElementById('packageFormErrors').classList.add('d-none');
+            document.getElementById('productsError').classList.add('d-none');
+            
+            // Remover clases de validación
+            const form = document.getElementById('createPackageForm');
+            const inputs = form.querySelectorAll('.form-control, .form-select');
+            inputs.forEach(input => {
+                input.classList.remove('is-invalid', 'is-valid');
+            });
+        }
+
+        // Abrir selector rápido de servicios
+        function openProductSelector() {
+            const modal = new bootstrap.Modal(document.getElementById('serviceQuickSelectModal'));
+            loadServicesGrid();
+            modal.show();
+        }
+
+        // Cargar grilla de servicios
+        function loadServicesGrid() {
+            const allServices = catalog.getAllServices();
+            const decorations = catalog.getDecorations();
+            const snackCarts = catalog.getSnackCarts();
+
+            // Renderizar todos los servicios
+            document.getElementById('allServicesGrid').innerHTML = renderServicesGrid(allServices);
+            
+            // Renderizar decoraciones
+            document.getElementById('decorationsGrid').innerHTML = renderServicesGrid(decorations);
+            
+            // Renderizar snack carts
+            document.getElementById('snackcartsGrid').innerHTML = renderServicesGrid(snackCarts);
+        }
+
+        // Renderizar grilla de servicios
+        function renderServicesGrid(services) {
+            if (!services || services.length === 0) {
+                return '<div class="col-12"><p class="text-muted text-center">No services available</p></div>';
+            }
+
+            return services.map(service => {
+                const typeBadge = service.type === 'decoration' 
+                    ? '<span class="badge bg-warning text-dark"><i class="fas fa-star me-1"></i>Decoration</span>'
+                    : '<span class="badge bg-info"><i class="fas fa-ice-cream me-1"></i>Snack Cart</span>';
+
+                return `
+                    <div class="col-md-3 col-sm-4 col-6">
+                        <div class="card h-100 service-card-select" style="cursor: pointer;" onclick="selectService('${service.id}')">
+                            <div class="position-relative" style="height: 120px; overflow: hidden;">
+                                <img src="${service.image}" class="card-img-top h-100" style="object-fit: cover;" alt="${service.name}">
+                                <div class="position-absolute top-0 end-0 m-1">
+                                    ${typeBadge}
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-2">
+                                <h6 class="card-title mb-0" style="font-size: 0.9rem;">${service.name}</h6>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-center p-2">
+                                <button type="button" class="btn btn-sm btn-primary" style="font-size: 0.8rem;" onclick="event.stopPropagation(); selectService('${service.id}')">
+                                    <i class="fas fa-plus me-1"></i>Select
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Seleccionar servicio
+        function selectService(serviceId) {
+            const service = catalog.getServiceById(serviceId);
+            if (!service) {
+                alertService.error('Error', 'Service not found');
+                return;
+            }
+
+            // Cerrar modal de selección rápida
+            const quickSelectModal = bootstrap.Modal.getInstance(document.getElementById('serviceQuickSelectModal'));
+            quickSelectModal.hide();
+
+            // Abrir modal de configuración
+            openProductConfigModal(service);
+        }
+
+        // Abrir modal de configuración de servicio
+        function openProductConfigModal(service, editIndex = null) {
+            const modal = new bootstrap.Modal(document.getElementById('productConfigModal'));
+            
+            // Configurar datos del servicio
+            document.getElementById('configProductId').value = service.id;
+            document.getElementById('configProductName').value = service.name;
+            document.getElementById('configProductType').value = service.type;
+            document.getElementById('configProductImage').value = service.image;
+
+            // Mostrar preview
+            document.getElementById('configProductImagePreview').src = service.image;
+            document.getElementById('configProductImagePreview').alt = service.name;
+            document.getElementById('configProductNamePreview').textContent = service.name;
+            
+            const typeBadge = service.type === 'decoration'
+                ? '<span class="badge bg-warning text-dark"><i class="fas fa-star me-1"></i>Decoration</span>'
+                : '<span class="badge bg-info"><i class="fas fa-ice-cream me-1"></i>Snack Cart</span>';
+            document.getElementById('configProductTypePreview').innerHTML = typeBadge;
+
+            // Si está en modo edición, cargar datos existentes
+            if (editIndex !== null && selectedServices[editIndex]) {
+                const existing = selectedServices[editIndex];
+                document.getElementById('configProductQuantity').value = existing.quantity;
+                document.getElementById('configProductDuration').value = existing.duration || '';
+                document.getElementById('configProductNotes').value = existing.notes || '';
+                document.getElementById('productConfigForm').setAttribute('data-edit-index', editIndex);
+            } else {
+                // Resetear formulario
+                document.getElementById('productConfigForm').reset();
+                document.getElementById('configProductId').value = service.id;
+                document.getElementById('configProductName').value = service.name;
+                document.getElementById('configProductType').value = service.type;
+                document.getElementById('configProductImage').value = service.image;
+                document.getElementById('configProductQuantity').value = 1;
+                document.getElementById('productConfigForm').removeAttribute('data-edit-index');
+            }
+
+            modal.show();
+        }
+
+        // Manejar envío del formulario de configuración de producto
+        document.getElementById('productConfigForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            if (!form.checkValidity()) {
+                e.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+            const product = {
+                id: document.getElementById('configProductId').value,
+                name: document.getElementById('configProductName').value,
+                type: document.getElementById('configProductType').value,
+                image: document.getElementById('configProductImage').value,
+                quantity: parseInt(document.getElementById('configProductQuantity').value) || 1,
+                duration: document.getElementById('configProductDuration').value ? parseInt(document.getElementById('configProductDuration').value) : null,
+                notes: document.getElementById('configProductNotes').value.trim() || null
+            };
+
+            // Verificar si está en modo edición
+            const editIndex = form.getAttribute('data-edit-index');
+            if (editIndex !== null) {
+                // Actualizar servicio existente
+                selectedServices[parseInt(editIndex)] = product;
+                await alertService.success('Service Updated', 'Service has been updated in the list.');
+            } else {
+                // Agregar nuevo servicio
+                selectedServices.push(product);
+                await alertService.success('Service Added', 'Service has been added to the package.');
+            }
+
+            updateServicesList();
+            
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('productConfigModal'));
+            modal.hide();
+            
+            // Resetear formulario
+            form.reset();
+            form.classList.remove('was-validated');
+        });
+
+        // Actualizar lista de servicios
+        function updateServicesList() {
+            const servicesList = document.getElementById('productsList');
+            const servicesError = document.getElementById('productsError');
+
+            if (selectedServices.length === 0) {
+                servicesList.innerHTML = '<p class="text-muted text-center py-3">No services added yet. Click "Add Service" to start.</p>';
+                servicesError.classList.remove('d-none');
+            } else {
+                servicesError.classList.add('d-none');
+                servicesList.innerHTML = selectedServices.map((service, index) => `
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    ${service.image ?
+                                        `<img src="${service.image}" class="img-fluid rounded" alt="${service.name}" style="max-height: 60px;">`
+                                        : '<div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 60px;"><i class="fas fa-image text-muted"></i></div>'}
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="mb-1">${service.name}</h6>
+                                    <small class="text-muted">ID: ${service.id} | Type: ${service.type}</small>
+                                    ${service.notes ? `<br><small class="text-muted">Notes: ${service.notes}</small>` : ''}
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <small><strong>Qty:</strong> ${service.quantity}</small>
+                                    ${service.duration ? `<br><small><strong>Duration:</strong> ${service.duration}h</small>` : ''}
+                                </div>
+                                <div class="col-md-2 text-end">
+                                    <button type="button" class="btn btn-sm btn-outline-primary me-1" onclick="editService(${index})">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeService(${index})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Editar servicio
+        function editService(index) {
+            const service = selectedServices[index];
+            
+            // Obtener el servicio del catálogo para tener la imagen completa
+            const catalogService = catalog.getServiceById(service.id) || service;
+            
+            // Abrir modal de configuración en modo edición
+            openProductConfigModal(catalogService, index);
+        }
+
+        // Remover servicio
+        function removeService(index) {
+            selectedServices.splice(index, 1);
+            updateServicesList();
+        }
+
+        // Manejar envío del formulario de creación
+        document.getElementById('createPackageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const errorsContainer = document.getElementById('packageFormErrors');
+            const errorsList = document.getElementById('packageFormErrorsList');
+            
+            // Validación básica del formulario HTML5
+            if (!form.checkValidity()) {
+                e.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Validar que haya al menos un servicio
+            if (selectedServices.length === 0) {
+                document.getElementById('productsError').classList.remove('d-none');
+                errorsContainer.classList.remove('d-none');
+                errorsList.innerHTML = '<li>At least one service is required</li>';
+                return;
+            }
+
+            // Recopilar datos del formulario
+            const packageData = {
+                venueName: document.getElementById('venueName').value.trim(),
+                venueAddress: document.getElementById('venueAddress').value.trim() || null,
+                venueCity: document.getElementById('venueCity').value.trim() || null,
+                venuePhone: document.getElementById('venuePhone').value.trim() || null,
+                venueEmail: document.getElementById('venueEmail').value.trim() || null,
+                contactName: document.getElementById('contactName').value.trim() || null,
+                packageName: document.getElementById('packageName').value.trim(),
+                description: document.getElementById('packageDescription').value.trim() || null,
+                notes: document.getElementById('packageNotes').value.trim() || null,
+                services: selectedServices
+            };
+
+            // Validar email si se proporciona
+            if (packageData.venueEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(packageData.venueEmail)) {
+                document.getElementById('venueEmail').classList.add('is-invalid');
+                errorsContainer.classList.remove('d-none');
+                errorsList.innerHTML = '<li>Invalid email address</li>';
+                return;
+            }
+
+            // Ocultar errores
+            errorsContainer.classList.add('d-none');
+            document.getElementById('productsError').classList.add('d-none');
+
+            // Deshabilitar botón de envío
+            const submitButton = document.getElementById('submitPackageBtn');
+            const originalText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating...';
+
+            try {
+                const result = await venuePackageService.createVenuePackage(packageData);
+
+                if (result.success) {
+                    await alertService.success('Success!', 'Venue package created successfully!');
+                    
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('createPackageModal'));
+                    modal.hide();
+                    
+                    // Recargar lista de paquetes
+                    loadPackages(currentPage, currentStatus);
+                } else {
+                    // Mostrar errores
+                    errorsContainer.classList.remove('d-none');
+                    if (result.validationErrors && result.validationErrors.length > 0) {
+                        errorsList.innerHTML = result.validationErrors.map(err => `<li>${err}</li>`).join('');
+                    } else {
+                        errorsList.innerHTML = `<li>${result.error || 'Error creating package'}</li>`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error creating package:', error);
+                errorsContainer.classList.remove('d-none');
+                errorsList.innerHTML = `<li>An error occurred while creating the package: ${error.message}</li>`;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }
+        });
+
+        // Validación en tiempo real
+        const formInputs = document.querySelectorAll('#createPackageForm input, #createPackageForm textarea, #createPackageForm select');
+        formInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.checkValidity()) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                } else {
+                    this.classList.remove('is-valid');
+                    this.classList.add('is-invalid');
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid') && this.checkValidity()) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                }
+            });
+        });
+
+        // Exponer funciones globalmente
+        window.openProductSelector = openProductSelector;
+        window.selectService = selectService;
+        window.editService = editService;
+        window.removeService = removeService;
+    </script>
+</body>
+
+</html>
+
