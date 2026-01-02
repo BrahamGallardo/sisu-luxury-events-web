@@ -206,7 +206,7 @@
         </div>
     </div>
 
-    <!-- Create Package Modal -->
+    <!-- Create/Edit Package Modal -->
     <div class="modal fade" id="createPackageModal" tabindex="-1" aria-labelledby="createPackageModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -215,6 +215,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="createPackageForm" novalidate>
+                    <input type="hidden" id="packageId" value="">
                     <div class="modal-body">
                         <!-- Validation Errors -->
                         <div id="packageFormErrors" class="alert alert-danger d-none" role="alert">
@@ -264,6 +265,25 @@
                             </div>
                         </div>
 
+                        <!-- Status (only for edit mode) -->
+                        <div class="card mb-4" id="statusCard" style="display: none;">
+                            <div class="card-header bg-primary text-white">
+                                <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Status</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="packageStatus" class="form-label">Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="packageStatus" required>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Confirmed">Confirmed</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a status.</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Package Details -->
                         <div class="card mb-4">
                             <div class="card-header bg-primary text-white">
@@ -286,8 +306,8 @@
                             </div>
                         </div>
 
-                        <!-- Services Selection -->
-                        <div class="card mb-4">
+                        <!-- Services Selection (only for create mode) -->
+                        <div class="card mb-4" id="servicesCard">
                             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                                 <h6 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Services <span class="text-danger">*</span></h6>
                                 <button type="button" class="btn btn-sm btn-light" onclick="openProductSelector()">
@@ -301,13 +321,16 @@
                                 <div id="productsError" class="alert alert-warning d-none" role="alert">
                                     At least one service is required.
                                 </div>
+                                <div id="servicesReadOnly" class="d-none">
+                                    <p class="text-muted"><i class="fas fa-info-circle me-2"></i>Services cannot be edited in update mode. Use the view details to see current services.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary" id="submitPackageBtn">
-                            <i class="fas fa-save me-2"></i>Create Package
+                            <i class="fas fa-save me-2"></i><span id="submitButtonText">Create Package</span>
                         </button>
                     </div>
                 </form>
@@ -626,11 +649,14 @@
                     <td>${pkg.services ? pkg.services.length : 0} services</td>
                     <td><span class="badge ${venuePackageService.getStatusBadgeClass(pkg.status)}">${pkg.status}</span></td>
                     <td><small>${venuePackageService.formatDateTime(pkg.createdDate)}</small></td>
-                    <td>
-                        <button class="btn btn-sm btn-primary" onclick="viewPackageDetails(${pkg.id})">
-                            <i class="fas fa-eye"></i> View
-                        </button>
-                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary me-1" onclick="viewPackageDetails(${pkg.id})">
+                                            <i class="fas fa-eye"></i> View
+                                        </button>
+                                        <button class="btn btn-sm btn-warning" onclick="editPackage(${pkg.id})">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                    </td>
                 </tr>
             `).join('');
 
@@ -722,6 +748,16 @@
                         <p><strong>Package Name:</strong> ${pkg.packageName}</p>
                         ${pkg.description ? `<p><strong>Description:</strong> ${pkg.description}</p>` : ''}
                         ${pkg.notes ? `<p><strong>Notes:</strong> ${pkg.notes}</p>` : ''}
+                        <p><strong>Status:</strong> 
+                            <select id="packageStatus" class="form-select form-select-sm d-inline-block w-auto ms-2" 
+                                    data-package-id="${pkg.id}" 
+                                    data-current-status="${pkg.status}">
+                                <option value="Pending" ${pkg.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Confirmed" ${pkg.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                                <option value="Cancelled" ${pkg.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                <option value="Completed" ${pkg.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </p>
                     </div>
                 </div>
                 <hr>
@@ -799,7 +835,33 @@
             selectElement.disabled = true;
 
             try {
-                const result = await venuePackageService.updateVenuePackageStatus(packageId, newStatus);
+                // Obtener el paquete completo primero
+                const getResult = await venuePackageService.getVenuePackageById(packageId);
+                
+                if (!getResult.success) {
+                    await alertService.error('Error', 'Error loading package: ' + getResult.error);
+                    selectElement.value = currentStatus;
+                    selectElement.disabled = false;
+                    return;
+                }
+
+                const pkg = getResult.data;
+                
+                // Actualizar solo el status usando el método de actualización completa
+                const updateData = {
+                    venueName: pkg.venueName,
+                    venueAddress: pkg.venueAddress,
+                    venueCity: pkg.venueCity,
+                    venuePhone: pkg.venuePhone,
+                    venueEmail: pkg.venueEmail,
+                    contactName: pkg.contactName,
+                    packageName: pkg.packageName,
+                    description: pkg.description,
+                    notes: pkg.notes,
+                    status: newStatus
+                };
+
+                const result = await venuePackageService.updateVenuePackage(packageId, updateData);
 
                 if (result.success) {
                     // Actualizar el atributo data-current-status
@@ -841,9 +903,63 @@
             loadPackages(1, 'all');
         });
 
+        // Editar paquete
+        async function editPackage(packageId) {
+            try {
+                const result = await venuePackageService.getVenuePackageById(packageId);
+
+                if (!result.success) {
+                    await alertService.error('Error', result.error || 'Error loading package details');
+                    return;
+                }
+
+                const pkg = result.data;
+                const modal = new bootstrap.Modal(document.getElementById('createPackageModal'));
+                
+                // Cambiar título y texto del botón
+                document.getElementById('createPackageModalLabel').innerHTML = '<i class="fas fa-edit me-2"></i>Edit Venue Package';
+                document.getElementById('submitButtonText').textContent = 'Update Package';
+                
+                // Ocultar sección de servicios y mostrar status
+                document.getElementById('servicesCard').style.display = 'none';
+                document.getElementById('statusCard').style.display = 'block';
+                document.getElementById('productsList').classList.add('d-none');
+                document.getElementById('servicesReadOnly').classList.remove('d-none');
+                
+                // Llenar formulario con datos existentes
+                document.getElementById('packageId').value = pkg.id;
+                document.getElementById('venueName').value = pkg.venueName || '';
+                document.getElementById('contactName').value = pkg.contactName || '';
+                document.getElementById('venueAddress').value = pkg.venueAddress || '';
+                document.getElementById('venueCity').value = pkg.venueCity || '';
+                document.getElementById('venuePhone').value = pkg.venuePhone || '';
+                document.getElementById('venueEmail').value = pkg.venueEmail || '';
+                document.getElementById('packageName').value = pkg.packageName || '';
+                document.getElementById('packageDescription').value = pkg.description || '';
+                document.getElementById('packageNotes').value = pkg.notes || '';
+                document.getElementById('packageStatus').value = pkg.status || 'Pending';
+                
+                // Limpiar errores
+                document.getElementById('packageFormErrors').classList.add('d-none');
+                
+                // Remover clases de validación
+                const form = document.getElementById('createPackageForm');
+                const inputs = form.querySelectorAll('.form-control, .form-select');
+                inputs.forEach(input => {
+                    input.classList.remove('is-invalid', 'is-valid');
+                });
+                
+                modal.show();
+            } catch (error) {
+                console.error('Error loading package for edit:', error);
+                await alertService.error('Error', 'Error loading package details');
+            }
+        }
+
         // Exponer funciones globalmente
         window.viewPackageDetails = viewPackageDetails;
         window.loadPackages = loadPackages;
+        window.editPackage = editPackage;
 
         // ========== CREATE PACKAGE FUNCTIONALITY ==========
         
@@ -860,10 +976,21 @@
         // Resetear formulario de creación
         function resetCreatePackageForm() {
             document.getElementById('createPackageForm').reset();
+            document.getElementById('packageId').value = '';
             selectedServices = [];
             updateServicesList();
             document.getElementById('packageFormErrors').classList.add('d-none');
             document.getElementById('productsError').classList.add('d-none');
+            
+            // Mostrar sección de servicios y ocultar status
+            document.getElementById('servicesCard').style.display = 'block';
+            document.getElementById('statusCard').style.display = 'none';
+            document.getElementById('productsList').classList.remove('d-none');
+            document.getElementById('servicesReadOnly').classList.add('d-none');
+            
+            // Cambiar título y texto del botón
+            document.getElementById('createPackageModalLabel').innerHTML = '<i class="fas fa-plus-circle me-2"></i>Create New Venue Package';
+            document.getElementById('submitButtonText').textContent = 'Create Package';
             
             // Remover clases de validación
             const form = document.getElementById('createPackageForm');
@@ -1106,8 +1233,11 @@
                 return;
             }
 
-            // Validar que haya al menos un servicio
-            if (selectedServices.length === 0) {
+            // Validar que haya al menos un servicio (solo en modo creación)
+            const packageId = document.getElementById('packageId').value;
+            const isEditMode = packageId && packageId.trim() !== '';
+            
+            if (!isEditMode && selectedServices.length === 0) {
                 document.getElementById('productsError').classList.remove('d-none');
                 errorsContainer.classList.remove('d-none');
                 errorsList.innerHTML = '<li>At least one service is required</li>';
@@ -1124,9 +1254,15 @@
                 contactName: document.getElementById('contactName').value.trim() || null,
                 packageName: document.getElementById('packageName').value.trim(),
                 description: document.getElementById('packageDescription').value.trim() || null,
-                notes: document.getElementById('packageNotes').value.trim() || null,
-                services: selectedServices
+                notes: document.getElementById('packageNotes').value.trim() || null
             };
+
+            // Agregar status solo en modo edición
+            if (isEditMode) {
+                packageData.status = document.getElementById('packageStatus').value;
+            } else {
+                packageData.services = selectedServices;
+            }
 
             // Validar email si se proporciona
             if (packageData.venueEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(packageData.venueEmail)) {
@@ -1144,13 +1280,26 @@
             const submitButton = document.getElementById('submitPackageBtn');
             const originalText = submitButton.innerHTML;
             submitButton.disabled = true;
-            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating...';
+            
+            if (isEditMode) {
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Updating...';
+            } else {
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating...';
+            }
 
             try {
-                const result = await venuePackageService.createVenuePackage(packageData);
+                let result;
+                if (isEditMode) {
+                    result = await venuePackageService.updateVenuePackage(parseInt(packageId), packageData);
+                } else {
+                    result = await venuePackageService.createVenuePackage(packageData);
+                }
 
                 if (result.success) {
-                    await alertService.success('Success!', 'Venue package created successfully!');
+                    const message = isEditMode 
+                        ? 'Venue package updated successfully!'
+                        : 'Venue package created successfully!';
+                    await alertService.success('Success!', message);
                     
                     // Cerrar modal
                     const modal = bootstrap.Modal.getInstance(document.getElementById('createPackageModal'));
@@ -1164,13 +1313,19 @@
                     if (result.validationErrors && result.validationErrors.length > 0) {
                         errorsList.innerHTML = result.validationErrors.map(err => `<li>${err}</li>`).join('');
                     } else {
-                        errorsList.innerHTML = `<li>${result.error || 'Error creating package'}</li>`;
+                        const errorMessage = isEditMode 
+                            ? (result.error || 'Error updating package')
+                            : (result.error || 'Error creating package');
+                        errorsList.innerHTML = `<li>${errorMessage}</li>`;
                     }
                 }
             } catch (error) {
-                console.error('Error creating package:', error);
+                console.error(`Error ${isEditMode ? 'updating' : 'creating'} package:`, error);
                 errorsContainer.classList.remove('d-none');
-                errorsList.innerHTML = `<li>An error occurred while creating the package: ${error.message}</li>`;
+                const errorMessage = isEditMode 
+                    ? `An error occurred while updating the package: ${error.message}`
+                    : `An error occurred while creating the package: ${error.message}`;
+                errorsList.innerHTML = `<li>${errorMessage}</li>`;
             } finally {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;

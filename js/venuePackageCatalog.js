@@ -67,31 +67,37 @@ class VenuePackageCatalog {
                 id: 'service_snack_charcuterie',
                 name: 'Charcuterie',
                 type: 'snack-cart',
-                image: 'img/SnackCars/snackcar-1.jpg'
+                image: 'img/SnackCars/snackcar-12.jpg'
             },
             {
                 id: 'service_snack_mini_pancakes',
                 name: 'Mini Pancakes',
                 type: 'snack-cart',
-                image: 'img/SnackCars/snackcar-2.jpg'
+                image: 'img/SnackCars/snackcar-6.jpg'
             },
             {
                 id: 'service_snack_fruit_snacks',
                 name: 'Fruit Snacks',
                 type: 'snack-cart',
-                image: 'img/SnackCars/snackcar-3.jpg'
+                image: 'img/SnackCars/snackcar-11.jpg'
             },
             {
                 id: 'service_snack_elote',
                 name: 'Elote',
                 type: 'snack-cart',
-                image: 'img/SnackCars/snackcar-4.jpg'
+                image: 'img/SnackCars/snackcar-7.jpg'
             },
             {
                 id: 'service_snack_paleta_cart',
                 name: 'Paleta Cart',
                 type: 'snack-cart',
-                image: 'img/SnackCars/snackcar-5.jpg'
+                image: 'img/SnackCars/snackcar-8.jpg'
+            },
+            {
+                id: 'service_snack_maruchan_cart',
+                name: 'Maruchan Cart',
+                type: 'snack-cart',
+                image: 'img/SnackCars/snackcar-13.jpg'
             }
         ];
     }

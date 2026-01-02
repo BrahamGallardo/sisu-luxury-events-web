@@ -221,6 +221,91 @@ class VenuePackageAdminService {
     }
 
     /**
+     * Actualiza un paquete de venue completo (solo entidad, no servicios)
+     * @param {number} id - ID del paquete
+     * @param {Object} packageData - Datos actualizados del paquete
+     * @returns {Promise<Object>} Paquete actualizado
+     */
+    async updateVenuePackage(id, packageData) {
+        try {
+            // Validar datos antes de enviar
+            const validationErrors = this.validatePackageDataForUpdate(packageData);
+            if (validationErrors.length > 0) {
+                return {
+                    success: false,
+                    error: 'Package data validation failed',
+                    validationErrors: validationErrors
+                };
+            }
+
+            // Preparar el DTO (sin servicios ya que no los actualizamos)
+            const dto = {
+                id: id,
+                venueName: packageData.venueName.trim(),
+                venueAddress: packageData.venueAddress?.trim() || null,
+                venueCity: packageData.venueCity?.trim() || null,
+                venuePhone: packageData.venuePhone?.trim() || null,
+                venueEmail: packageData.venueEmail?.trim() || null,
+                contactName: packageData.contactName?.trim() || null,
+                packageName: packageData.packageName.trim(),
+                description: packageData.description?.trim() || null,
+                notes: packageData.notes?.trim() || null,
+                status: packageData.status || 'Pending'
+            };
+
+            const result = await this.api.request(`/${id}`, {
+                method: 'PUT',
+                headers: this.getAuthHeaders(),
+                body: dto
+            });
+
+            return result;
+        } catch (error) {
+            console.error('Error actualizando paquete de venue:', error);
+            return {
+                success: false,
+                error: error.message || 'Error al actualizar el paquete'
+            };
+        }
+    }
+
+    /**
+     * Valida los datos del paquete para actualización (sin validar servicios)
+     * @private
+     * @param {Object} packageData - Datos del paquete a validar
+     * @returns {Array} Lista de errores de validación
+     */
+    validatePackageDataForUpdate(packageData) {
+        const errors = [];
+
+        if (!packageData.venueName || packageData.venueName.trim().length === 0) {
+            errors.push('Venue name is required');
+        }
+
+        if (!packageData.packageName || packageData.packageName.trim().length === 0) {
+            errors.push('Package name is required');
+        }
+
+        // Validar email si se proporciona
+        if (packageData.venueEmail && packageData.venueEmail.trim().length > 0) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(packageData.venueEmail.trim())) {
+                errors.push('Invalid email address');
+            }
+        }
+
+        // Validar status si se proporciona
+        if (packageData.status) {
+            const validStatuses = ['Pending', 'Confirmed', 'Cancelled', 'Completed'];
+            if (!validStatuses.includes(packageData.status)) {
+                errors.push(`Invalid status. Valid values are: ${validStatuses.join(', ')}`);
+            }
+        }
+
+        return errors;
+    }
+
+    /**
      * Formatea una fecha a formato legible
      * @param {string} dateString - Fecha en formato ISO
      * @returns {string} Fecha formateada

@@ -132,10 +132,10 @@
                     any event, featuring a variety of delicious toppings and flavors that everyone will love.</p>
             </div>
 
-            <div class="row g-5 align-items-start mb-5 justify-content-center">
+            <div class="row g-5 align-items-stretch mb-5 justify-content-center">
                 <!-- Image Column -->
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative overflow-hidden rounded-4 shadow-lg" style="height: 100%;">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-lg h-100">
                         <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-6.jpg"
                             alt="Mini Pancakes Cart">
                     </div>
@@ -143,8 +143,8 @@
 
                 <!-- Package Details -->
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="container bg-light py-6 pt-0">
-                        <div class="container">
+                    <div class="container bg-light py-6 pt-0 h-100 d-flex flex-column">
+                        <div class="container flex-grow-1 d-flex flex-column">
                             <!-- Header box -->
                             <div class="bg-dark text-light rounded-bottom p-5 my-5 mt-0 wow fadeInUp"
                                 data-wow-delay="0.1s">
@@ -155,13 +155,13 @@
                                 </div>
                             </div>
 
-                            <!-- Section Title -->
-                            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                                <!-- Package Includes -->
+                            <!-- Package Details -->
+                            <div class="text-center mx-auto mb-5 wow fadeInUp flex-grow-1 d-flex flex-column justify-content-start"
+                                data-wow-delay="0.1s">
                                 <div class="col-lg-12">
-                                    <h4 class="text-light mb-4"><i class="fas fa-utensils me-3"></i>Package Includes
+                                    <h4 class="text-light mb-4"><i class="fas fa-utensils me-3"></i>Package Details
                                     </h4>
-                                    <ul class="mb-0">
+                                    <ul class="mb-0 text-start">
                                         <li class="mb-3 d-flex align-items-center text-light">
                                             <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
                                             <span style="font-size: 1.1rem;">Mini Pancakes Cart</span>
@@ -178,6 +178,19 @@
                                             <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
                                             <span style="font-size: 1.1rem;">2 hrs Service</span>
                                         </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">4 Toppings, 4 Syrups, 2 Fruits</span>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">8 Mini Pancakes per Plate</span>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">Whipped Cream & Powdered Sugar
+                                                Included</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -189,15 +202,9 @@
                                     <div class="d-flex flex-column bg-white rounded overflow-hidden h-100">
                                         <div class="text-center p-4">
                                             <div class="h-100">
-                                                <h4 class=" mb-3">100 Guests</h4>
-                                                <div class=" ">$1,000</div>
-                                                <p class=" mt-3 mb-0" style="opacity: 0.9;">Perfect for
-                                                    medium-sized celebrations</p>
-                                                <br>
-                                                <h4 class=" mb-3">150 Guests</h4>
-                                                <div class=" ">$1,300</div>
-                                                <p class=" mt-3 mb-0" style="opacity: 0.9;">Ideal for larger
-                                                    gatherings and events</p>
+                                                <h4 class=" mb-3">MIN OF 30 GUESTS</h4>
+                                                <div class=" ">$360.00</div>
+                                                <p class=" mt-3 mb-0" style="opacity: 0.9;">Fresh, warm mini pancakes with delicious toppings and flavors.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -209,36 +216,86 @@
             </div>
             <br>
 
-            <!-- Extras -->
-            <div class="mb-5 package-content p-2 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="col-lg-12">
-                        <div class="row mb-2">
-                            <h2 class="text-light text-center mb-2">Extras</h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="d-flex justify-content-evenly">
-                                    <h4 class="text-light">Pancake Cart - 100 Guests</h4>
-                                    <div class="text-light">$800</div>
+            <!-- Options Cards -->
+            <div class="container-xxl py-6 bg-light">
+                <div class="container">
+                    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                        <p class="text-light text-uppercase mb-2">✨ Available Options</p>
+                        <h2 class="display-6 mb-4">Syrups, Toppings & Fruits</h2>
+                    </div>
+                    <div class="row g-4">
+                        <!-- SYRUPS Card -->
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item bg-white rounded h-100 p-5 text-center">
+                                <div class="btn-square bg-primary rounded-circle mx-auto mb-4"
+                                    style="width: 90px; height: 90px;">
+                                    <i class="fas fa-tint fa-3x text-white"></i>
                                 </div>
-
+                                <h5 class="mb-3">SYRUPS</h5>
+                                <ul class="list-unstyled mb-0 text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>NUTELLA</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>LECHERA</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>DULCE DE LECHE</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>MAPLE SYRUP</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>CARAMEL</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>CHOCOLATE SYRUP</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>STRAWBERRY SYRUP</li>
+                                </ul>
                             </div>
-                            <div class="col-6">
-                                <div class="d-flex justify-content-evenly">
-                                    <h4 class="text-light">Pancake Cart - 150 Guests</h4>
-                                    <div class="text-light">$750</div>
+                        </div>
+
+                        <!-- TOPPINGS Card -->
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="service-item bg-white rounded h-100 p-5 text-center">
+                                <div class="btn-square bg-primary rounded-circle mx-auto mb-4"
+                                    style="width: 90px; height: 90px;">
+                                    <i class="fas fa-cookie-bite fa-3x text-white"></i>
                                 </div>
+                                <h5 class="mb-3">TOPPINGS</h5>
+                                <ul class="list-unstyled mb-0 text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>OREOS</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>M&MS</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>PECANS</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>ALMONDS</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>CINNAMON TOAST CRUNCH
+                                    </li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>FRUITY PEBBLES</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>MARSHMALLOWS</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>GALLETAS MARIA</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>BISCOFF COOKIES</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- FRUITS Card -->
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item bg-white rounded h-100 p-5 text-center">
+                                <div class="btn-square bg-primary rounded-circle mx-auto mb-4"
+                                    style="width: 90px; height: 90px;">
+                                    <i class="fas fa-apple-alt fa-3x text-white"></i>
+                                </div>
+                                <h5 class="mb-3">FRUITS</h5>
+                                <ul class="list-unstyled mb-0 text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>STRAWBERRIES</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>BANANAS</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            <div class="text-center mt-5">
-                <a href="snack-carts.html" class="btn btn-primary rounded-pill py-3 px-5">Back to Snack Carts</a>
             </div>
         </div>
     </div>
     <!-- Mini Pancakes Details End -->
+
+    <!-- Back Button -->
+    <div class="container-xxl">
+        <div class="container">
+            <div class="text-center">
+                <a href="snack-carts.html" class="btn btn-primary rounded-pill py-3 px-5">Back to Snack Carts</a>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Footer Start -->
@@ -272,7 +329,7 @@
                     <a class="btn btn-link" href="about.html">About Us</a>
                     <a class="btn btn-link" href="decorations.html">Decorations</a>
                     <a class="btn btn-link" href="snack-carts.html">Snack Carts</a>
-<a class="btn btn-link" href="terms.html">Terms</a>
+                    <a class="btn btn-link" href="terms.html">Terms</a>
                     <a class="btn btn-link" href="booking.html">Booking</a>
                     <a class="btn btn-link" href="contact.html">Contact Us</a>
                 </div>
