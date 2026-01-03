@@ -149,9 +149,9 @@ class BookingAdminService {
     getStatusBadgeClass(status) {
         const statusClasses = {
             'Pending': 'bg-warning text-dark',
-            'Confirmed': 'bg-success',
+            'Confirmed': 'bg-info',
             'Cancelled': 'bg-danger',
-            'Completed': 'bg-secondary'
+            'Completed': 'bg-success'
         };
         return statusClasses[status] || 'bg-info';
     }

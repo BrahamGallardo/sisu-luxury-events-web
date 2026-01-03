@@ -18,11 +18,29 @@ class BookingPage {
         this.renderEventSummary();
         this.attachFormEvents();
         this.prefillCustomerInfo();
+        this.setMinDate();
 
         // Escuchar cambios en el carrito
         window.addEventListener('eventCartUpdated', () => {
             this.renderEventSummary();
         });
+    }
+
+    /**
+ * Establece la fecha mínima como hoy para el campo eventDate
+ * @private
+ */
+    setMinDate() {
+        const eventDateInput = document.getElementById('eventDate');
+        if (eventDateInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const year = tomorrow.getFullYear();
+            const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const day = String(tomorrow.getDate()).padStart(2, '0');
+            const tomorrowString = `${year}-${month}-${day}`;
+            eventDateInput.setAttribute('min', tomorrowString);
+        }
     }
 
     /**
@@ -203,7 +221,7 @@ class BookingPage {
 
         // Llenar campos del formulario
         const fields = ['fullName', 'email', 'phone', 'city', 'eventType', 'eventDate',
-                        'eventTime', 'guestCount', 'venue', 'budget', 'hearAbout', 'additionalDetails'];
+            'eventTime', 'guestCount', 'venue', 'budget', 'hearAbout', 'additionalDetails'];
 
         fields.forEach(field => {
             const element = document.getElementById(field);

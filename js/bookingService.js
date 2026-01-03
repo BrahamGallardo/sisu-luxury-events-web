@@ -192,8 +192,8 @@ class BookingService {
 
         // Validar guestCount
         const guestCount = parseInt(data.guestCount);
-        if (isNaN(guestCount) || guestCount <= 0) {
-            errors.push('Guest count must be greater than zero');
+        if (isNaN(guestCount) || guestCount < 30) {
+            errors.push('Guest count must be at least 30');
         }
 
         // Validar services

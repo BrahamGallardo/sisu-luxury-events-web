@@ -84,25 +84,13 @@ class ServiceModal {
                                 <i class="fas fa-clock me-2 text-primary"></i>Event Duration (hours)
                             </label>
                             <select class="form-select" id="serviceDuration" style="max-width: 200px;">
-                                <option value="2">2 hours</option>
+                                <option value="2" selected>2 hours</option>
                                 <option value="3">3 hours</option>
-                                <option value="4" selected>4 hours</option>
+                                <option value="4">4 hours</option>
                                 <option value="5">5 hours</option>
                                 <option value="6">6 hours</option>
                                 <option value="8">8 hours</option>
-                                <option value="12">12 hours</option>
-                                <option value="24">Full day (24 hours)</option>
                             </select>
-                        </div>
-
-                        <!-- Extras (for snack carts) -->
-                        <div id="extrasSection" class="mb-4" style="display: none;">
-                            <label class="text-black fw-bold">
-                                <i class="fas fa-star me-2 text-primary"></i>Available Extras
-                            </label>
-                            <div id="extrasList" class="row g-3">
-                                <!-- Extras will be inserted here -->
-                            </div>
                         </div>
 
                         <!-- Notes -->
@@ -179,17 +167,8 @@ class ServiceModal {
 
         // Resetear valores a defaults
         document.getElementById('serviceQuantity').value = 1;
-        document.getElementById('serviceDuration').value = 4;
+        document.getElementById('serviceDuration').value = 2;
         document.getElementById('serviceNotes').value = '';
-
-        // Manejar extras (solo para snack carts)
-        const extrasSection = document.getElementById('extrasSection');
-        if (service.type === 'snack-cart' && service.extras && service.extras.length > 0) {
-            this.renderExtras(service.extras);
-            extrasSection.style.display = 'block';
-        } else {
-            extrasSection.style.display = 'none';
-        }
 
         // Resetear título y botón al estado "agregar"
         const modalTitle = this.modalElement.querySelector('.modal-title');
@@ -223,7 +202,7 @@ class ServiceModal {
 
         // Pre-llenar con valores existentes
         document.getElementById('serviceQuantity').value = service.quantity || 1;
-        document.getElementById('serviceDuration').value = service.duration || 4;
+        document.getElementById('serviceDuration').value = service.duration || 2;
         document.getElementById('serviceNotes').value = service.notes || '';
 
         // Manejar extras (solo para snack carts)
@@ -251,37 +230,6 @@ class ServiceModal {
     }
 
     /**
-     * Renderiza los extras disponibles
-     * @private
-     * @param {Array} availableExtras - Array de extras disponibles
-     * @param {Array} selectedExtras - Array de extras previamente seleccionados (opcional)
-     */
-    renderExtras(availableExtras, selectedExtras = []) {
-        const extrasList = document.getElementById('extrasList');
-        extrasList.innerHTML = '';
-
-        availableExtras.forEach(extra => {
-            // Verificar si este extra estaba seleccionado
-            const isChecked = selectedExtras && selectedExtras.some(e => e.id === extra.id);
-
-            const extraCard = document.createElement('div');
-            extraCard.className = 'col-md-6';
-            extraCard.innerHTML = `
-                <div class="form-check bg-light p-3 rounded">
-                    <input class="form-check-input" type="checkbox" value="${extra.id}"
-                           id="extra_${extra.id}" data-extra-name="${extra.name}"
-                           ${isChecked ? 'checked' : ''}>
-                    <label class="text-black form-check-label w-75" for="extra_${extra.id}">
-                        <strong>${extra.name}</strong>
-                        ${extra.description ? `<br><small>${extra.description}</small>` : ''}
-                    </label>
-                </div>
-            `;
-            extrasList.appendChild(extraCard);
-        });
-    }
-
-    /**
      * Agrega o actualiza el servicio al evento
      * @private
      */
@@ -294,7 +242,7 @@ class ServiceModal {
             quantity: parseInt(document.getElementById('serviceQuantity').value),
             duration: parseInt(document.getElementById('serviceDuration').value),
             notes: document.getElementById('serviceNotes').value,
-            extras: this.getSelectedExtras()
+            extras: []
         };
 
         let success = false;
@@ -351,25 +299,6 @@ class ServiceModal {
     }
 
     /**
-     * Obtiene los extras seleccionados
-     * @private
-     * @returns {Array} Array de extras seleccionados
-     */
-    getSelectedExtras() {
-        const checkboxes = document.querySelectorAll('#extrasList input[type="checkbox"]:checked');
-        const extras = [];
-
-        checkboxes.forEach(checkbox => {
-            extras.push({
-                id: checkbox.value,
-                name: checkbox.getAttribute('data-extra-name')
-            });
-        });
-
-        return extras;
-    }
-
-    /**
      * Resetea el formulario del modal
      * @private
      */
@@ -377,12 +306,6 @@ class ServiceModal {
         document.getElementById('serviceQuantity').value = 1;
         document.getElementById('serviceDuration').value = 4;
         document.getElementById('serviceNotes').value = '';
-
-        // Desmarcar extras
-        const checkboxes = document.querySelectorAll('#extrasList input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-        });
 
         // Resetear modo edición
         this.editMode = false;

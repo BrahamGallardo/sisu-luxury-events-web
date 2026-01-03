@@ -164,9 +164,9 @@
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-sm btn-outline-primary active" data-status="all">All</button>
                                             <button type="button" class="btn btn-sm btn-outline-warning" data-status="Pending">Pending</button>
-                                            <button type="button" class="btn btn-sm btn-outline-success" data-status="Confirmed">Confirmed</button>
+                                            <button type="button" class="btn btn-sm btn-outline-info" data-status="Confirmed">Confirmed</button>
                                             <button type="button" class="btn btn-sm btn-outline-danger" data-status="Cancelled">Cancelled</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary" data-status="Completed">Completed</button>
+                                            <button type="button" class="btn btn-sm btn-outline-success" data-status="Completed">Completed</button>
                                         </div>
                                     </div>
                                 </div>
@@ -520,7 +520,7 @@
         // Variables de estado
         let currentPage = 1;
         let currentStatus = 'all';
-        const pageSize = 15;
+        const pageSize = 10;
 
         // Manejar el botón de logout
         document.getElementById('logoutButton').addEventListener('click', async function() {
