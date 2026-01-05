@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Snack Carts - Sisu Luxury Events</title>
+    <title>Nachos - Sisu Luxury Events</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -40,8 +40,38 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Custom Styles for Nachos Package -->
+    <style>
+        .package-content {
+            width: 100%;
+            background: #ffcd35;
+        }
+
+        .package-content h2,
+        .package-content h4,
+        .package-content ul,
+        .package-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .package-content h2 {
+            animation-delay: 0.3s;
+        }
+
+        .package-content h4 {
+            animation-delay: 0.5s;
+        }
+
+        .package-content ul {
+            animation-delay: 0.7s;
+        }
+
+        .package-content {
+            animation-delay: 0.9s;
+        }
+    </style>
 </head>
 
 <body>
@@ -79,11 +109,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center pt-5 pb-3">
-            <h1 class="display-4 text-light animated slideInDown mb-3">Snack Carts</h1>
+            <h1 class="display-4 text-light animated slideInDown mb-3">Nachos</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a class="text-light" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">Snack Carts</li>
+                    <li class="breadcrumb-item"><a class="text-light" href="snack-carts.html">Snack Carts</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Nachos</li>
                 </ol>
             </nav>
         </div>
@@ -91,137 +122,126 @@
     <!-- Page Header End -->
 
 
-    <!-- Snack Carts Gallery Start -->
+    <!-- Nachos Details Start -->
     <div class="container-xxl py-6">
         <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="text-primary text-uppercase mb-2">✨ Our Snack Carts</p>
-                <h1 class="display-6 mb-4">Delightful Treats For Every Occasion</h1>
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+                <p class="text-primary text-uppercase mb-2">✨ Nachos Experience</p>
+                <h1 class="display-6 mb-4">Delicious Loaded Nachos For Your Event</h1>
+                <p>Bring the irresistible flavors of loaded nachos to your celebration. Our nachos cart offers crispy tortilla chips topped with melted cheese, savory beans, seasoned ground beef, and fresh toppings for an unforgettable taste experience.</p>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a href="snack-charcuterie.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-12.jpg" alt="Snack Cart 1">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Charcuterie</h5>
-                            </div>
-                        </div>
-                    </a>
+
+            <div class="row g-5 align-items-stretch mb-5 justify-content-center">
+                <!-- Image Column -->
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-lg h-100">
+                        <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-14.jpg"
+                            alt="Nachos Cart">
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <a href="snack-minipancakes.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-6.jpg" alt="Mini Pancakes Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
+
+                <!-- Package Details -->
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="container bg-light py-6 pt-0 h-100 d-flex flex-column">
+                        <div class="container flex-grow-1 d-flex flex-column">
+                            <!-- Header box -->
+                            <div class="bg-dark text-light rounded-bottom p-5 my-5 mt-0 wow fadeInUp"
+                                data-wow-delay="0.1s">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-lg-12">
+                                        <h1 class="display-4 text-light mb-0">Nachos Package</h1>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Mini Pancakes</h5>
+
+                            <!-- Package Details -->
+                            <div class="text-center mx-auto mb-5 wow fadeInUp flex-grow-1 d-flex flex-column justify-content-start" data-wow-delay="0.1s">
+                                <div class="col-lg-12">
+                                    <h4 class="text-light mb-4"><i class="fas fa-utensils me-3"></i>Package Details
+                                    </h4>
+                                    <ul class="mb-0 text-start">
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">Nachos Cart</span>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">Green Wall</span>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">Flower or Balloon Arch</span>
+                                        </li>
+                                        <li class="mb-3 d-flex align-items-center text-light">
+                                            <i class="fas fa-check-circle text-primary me-3 fa-lg"></i>
+                                            <span style="font-size: 1.1rem;">2 hrs Service</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Cards -->
+                            <div class="row g-4 justify-content-center">
+                                <!-- Guest Options -->
+                                <div class="col-md-10 wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="d-flex flex-column bg-white rounded overflow-hidden h-100">
+                                        <div class="text-center p-4">
+                                            <div class="h-100">
+                                                <h4 class=" mb-3">MIN OF 30 GUESTS</h4>
+                                                <div class=" ">$360.00</div>
+                                                <p class="mt-3 mb-0" style="opacity: 0.9;">Tortilla chips with cheese, beans, beef, and toppings.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a href="snack-fruitsnacks.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-11.jpg" alt="Fruit Snacks Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
+            </div>
+            <br>
+
+            <!-- Options Cards -->
+            <div class="container-xxl py-6 bg-light">
+                <div class="container">
+                    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                        <p class="text-light text-uppercase mb-2">✨ Available Options</p>
+                        <h2 class="display-6 mb-4">Toppings</h2>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <!-- TOPPINGS Card -->
+                        <div class="col-lg-4 col-md-8 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item bg-white rounded h-100 p-5 text-center">
+                                <div class="btn-square bg-primary rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                                    <i class="fas fa-pepper-hot fa-3x text-white"></i>
                                 </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Fruit Snacks</h5>
+                                <h5 class="mb-3">TOPPINGS</h5>
+                                <ul class="list-unstyled mb-0 text-start">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Nacho Cheese</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Chili Beans</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Ground Beef</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Fresh Salsa</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Jalapeños</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Corn</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Lettuce</li>
+                                </ul>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <a href="snack-elote.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-7.jpg" alt="Elote Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Elote</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a href="snack-paletacart.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-8.jpg" alt="Paleta Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Paleta</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a href="snack-maruchan.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-13.jpg" alt="Maruchan Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Maruchan</h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <a href="snack-nachos.html" class="text-decoration-none">
-                        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                            <div class="position-relative" style="height: 400px; overflow: hidden;">
-                                <img class="img-fluid w-100 h-100" style="object-fit: cover;" src="img/SnackCars/snackcar-14.jpg" alt="Nachos Cart">
-                                <div class="product-overlay">
-                                    <span class="btn btn-lg-square btn-outline-light rounded-circle">
-                                        <i class="fa fa-eye text-primary"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Nachos</h5>
-                            </div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Snack Carts Gallery End -->
+    <!-- Nachos Details End -->
+
+    <!-- Back Button -->
+    <div class="container-xxl">
+        <div class="container">
+            <div class="text-center">
+                <a href="snack-carts.html" class="btn btn-primary rounded-pill py-3 px-5">Back to Snack Carts</a>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Footer Start -->
@@ -255,7 +275,7 @@
                     <a class="btn btn-link" href="about.html">About Us</a>
                     <a class="btn btn-link" href="decorations.html">Decorations</a>
                     <a class="btn btn-link" href="snack-carts.html">Snack Carts</a>
-<a class="btn btn-link" href="terms.html">Terms</a>
+                    <a class="btn btn-link" href="terms.html">Terms</a>
                     <a class="btn btn-link" href="booking.html">Booking</a>
                     <a class="btn btn-link" href="contact.html">Contact Us</a>
                 </div>
@@ -322,16 +342,11 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Event Booking Scripts -->
-    <script src="js/alertService.js"></script>
+    <!-- Event Booking Badge -->
     <script src="js/eventStorage.js"></script>
     <script src="js/eventCart.js"></script>
-    <script src="js/serviceModal.js"></script>
     <script src="js/eventBadge.js"></script>
-    <script src="js/snackCartHelpers.js"></script>
 </body>
 
 </html>
+

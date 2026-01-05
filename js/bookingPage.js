@@ -106,20 +106,6 @@ class BookingPage {
             '<span class="badge bg-warning text-dark">Decoration</span>' :
             '<span class="badge bg-info">Snack Cart</span>';
 
-        let extrasHTML = '';
-        if (service.extras && service.extras.length > 0) {
-            extrasHTML = `
-                <div class="mt-2">
-                    <small class="text-white d-block"><strong>Extras:</strong></small>
-                    <ul class="list-unstyled ms-3 mb-0">
-                        ${service.extras.map(extra => `
-                            <li><small><i class="fas fa-check text-success me-1"></i>${extra.name}</small></li>
-                        `).join('')}
-                    </ul>
-                </div>
-            `;
-        }
-
         let notesHTML = '';
         if (service.notes && service.notes.trim() !== '') {
             notesHTML = `
@@ -147,7 +133,6 @@ class BookingPage {
                             <p class="mb-1"><strong>Quantity:</strong> ${service.quantity}</p>
                             <p class="mb-1"><strong>Duration:</strong> ${service.duration} hours</p>
                         </div>
-                        ${extrasHTML}
                         ${notesHTML}
                     </div>
                     <div class="col-md-3 text-md-end">

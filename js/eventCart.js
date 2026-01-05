@@ -34,7 +34,6 @@ class EventCart {
      * @param {number} service.quantity - Cantidad
      * @param {number} service.duration - Duración en horas
      * @param {string} service.notes - Observaciones
-     * @param {Array} service.extras - Extras (solo para snack carts)
      * @returns {boolean} True si se agregó exitosamente
      */
     addService(service) {
@@ -56,7 +55,7 @@ class EventCart {
                 quantity: service.quantity || 1,
                 duration: service.duration || 4,
                 notes: service.notes || '',
-                extras: service.extras || [],
+                extras: [],
                 addedAt: new Date().toISOString()
             };
 
@@ -68,7 +67,7 @@ class EventCart {
                 cart.services[existingIndex].quantity += newService.quantity;
                 cart.services[existingIndex].duration = newService.duration;
                 cart.services[existingIndex].notes = newService.notes;
-                cart.services[existingIndex].extras = newService.extras;
+                cart.services[existingIndex].extras = [];
             } else {
                 // Si no existe, agregar nuevo
                 cart.services.push(newService);

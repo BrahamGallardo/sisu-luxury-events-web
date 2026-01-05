@@ -205,15 +205,6 @@ class ServiceModal {
         document.getElementById('serviceDuration').value = service.duration || 2;
         document.getElementById('serviceNotes').value = service.notes || '';
 
-        // Manejar extras (solo para snack carts)
-        const extrasSection = document.getElementById('extrasSection');
-        if (service.type === 'snack-cart' && service.availableExtras && service.availableExtras.length > 0) {
-            this.renderExtras(service.availableExtras, service.extras);
-            extrasSection.style.display = 'block';
-        } else {
-            extrasSection.style.display = 'none';
-        }
-
         // Cambiar título del modal a modo edición
         const modalTitle = this.modalElement.querySelector('.modal-title');
         modalTitle.innerHTML = `

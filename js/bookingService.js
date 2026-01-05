@@ -93,14 +93,6 @@ class BookingService {
         }
 
         return services.map(service => {
-            // Mapear extras
-            const extras = service.extras && Array.isArray(service.extras)
-                ? service.extras.map(extra => ({
-                    bookingServiceId: 0, // Se asignará en el backend
-                    extraId: extra.id || extra.extraId || '',
-                    name: extra.name || ''
-                }))
-                : [];
 
             return {
                 eventBookingId: 0, // Se asignará en el backend
@@ -111,7 +103,7 @@ class BookingService {
                 quantity: parseInt(service.quantity) || 1,
                 duration: parseInt(service.duration) || 0,
                 notes: service.notes?.trim() || null,
-                extras: extras
+                extras: []
             };
         });
     }

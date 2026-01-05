@@ -357,7 +357,11 @@ class CatalogPdfService {
         yPosition += 7;
         doc.text('• Elote', margin + 5, yPosition);
         yPosition += 7;
+        doc.text('• Nachos', margin + 5, yPosition);
+        yPosition += 7;
         doc.text('• Paleta Cart', margin + 5, yPosition);
+        yPosition += 7;
+        doc.text('• Maruchan Cart', margin + 5, yPosition);
     }
 
     /**

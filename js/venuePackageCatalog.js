@@ -88,6 +88,12 @@ class VenuePackageCatalog {
                 image: 'img/SnackCars/snackcar-7.jpg'
             },
             {
+                id: 'service_snack_nachos',
+                name: 'Nachos',
+                type: 'snack-cart',
+                image: 'img/SnackCars/snackcar-14.jpg'
+            },
+            {
                 id: 'service_snack_paleta_cart',
                 name: 'Paleta Cart',
                 type: 'snack-cart',
