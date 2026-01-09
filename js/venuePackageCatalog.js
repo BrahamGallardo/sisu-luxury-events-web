@@ -18,49 +18,49 @@ class VenuePackageCatalog {
                 id: 'service_decoration_baby_shower',
                 name: 'Baby Shower Decor',
                 type: 'decoration',
-                image: 'img/Decorations/decor-1.jpg'
+                image: 'img/Decorations/decor-1-compressed.jpg'
             },
             {
                 id: 'service_decoration_elegant',
                 name: 'Elegant Backdrop',
                 type: 'decoration',
-                image: 'img/Decorations/decor-5.jpg'
+                image: 'img/Decorations/decor-5-compressed.jpg'
             },
             {
                 id: 'service_decoration_floral_dream',
                 name: 'Floral Dream',
                 type: 'decoration',
-                image: 'img/Decorations/decor-9.jpg'
+                image: 'img/Decorations/decor-9-compressed.jpg'
             },
             {
                 id: 'service_decoration_fairy_tale',
                 name: 'Fairy Tale Decor',
                 type: 'decoration',
-                image: 'img/Decorations/decor-13.jpg'
+                image: 'img/Decorations/decor-13-compressed.jpg'
             },
             {
                 id: 'service_decoration_love',
                 name: 'Love Celebration',
                 type: 'decoration',
-                image: 'img/Decorations/decor-17.jpg'
+                image: 'img/Decorations/decor-17-compressed.jpg'
             },
             {
                 id: 'service_decoration_white_butterfly',
                 name: 'White Butterfly Decor',
                 type: 'decoration',
-                image: 'img/Decorations/decor-21.jpg'
+                image: 'img/Decorations/decor-21-compressed.jpg'
             },
             {
                 id: 'service_decoration_elegant_entrance',
                 name: 'Elegant Entrance',
                 type: 'decoration',
-                image: 'img/Decorations/decor-25.jpg'
+                image: 'img/Decorations/decor-25-compressed.jpg'
             },
             {
                 id: 'service_decoration_shimmer_walls',
                 name: 'Shimmer Walls',
                 type: 'decoration',
-                image: 'img/Decorations/decor-29.jpg'
+                image: 'img/Decorations/decor-29-compressed.jpg'
             },
             // Snack Carts
             {
